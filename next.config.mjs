@@ -9,6 +9,9 @@ const nextConfig = {
     return cfg;
   },
   output: "export",
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
