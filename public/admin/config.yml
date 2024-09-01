@@ -13,3 +13,12 @@ collections:
         fields:
           - { label: "Header", name: "header", widget: "string" }
           - { label: "Content", name: "content", widget: "string" }
+      - label: "Upcoming Concerts"
+        name: "upcoming-concerts"
+        file: "content/upcoming-concerts.md"
+        widget: list
+        fields:
+          - { label: "Title", name: "title", widget: string }
+          - { label: "Date and Time", name: "datetime", widget: datetime }
+          - { label: "Location", name: "location", widget: "map" }
+          - { label: "Ticket Link", name: "ticketLink", widget: string }
