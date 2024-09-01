@@ -14,7 +14,7 @@ collections:
           - { label: "Header", name: "header", widget: "string" }
           - { label: "Content", name: "content", widget: "string" }
       - label: "Upcoming Concerts"
-        name: "upcoming-concerts"
+        name: "concerts"
         file: "content/upcoming-concerts.md"
         widget: list
         fields:
@@ -23,7 +23,7 @@ collections:
           - { label: "Address", name: "address", widget: "string" }
           - { label: "Ticket Link", name: "ticketLink", widget: string }
       - label: "About Page"
-        name: "about-page"
+        name: "paragraps"
         file: "content/about-page.md"
         widget: list
         fields:
