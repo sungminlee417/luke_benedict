@@ -1,3 +1,4 @@
+import { formatDateTime } from "@/helperFunctions/format";
 import React from "react";
 
 interface ConcertProps {
@@ -15,9 +16,15 @@ const Concert = ({ concert }: ConcertProps) => {
       <div className="card-body">
         <h3 className="card-title">{concert.title}</h3>
         <p>{concert.address}</p>
-        <p>{concert.datetime}</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">Purchase Tickets</button>
+        <p>{formatDateTime(concert.datetime)}</p>
+        <div className="card-actions justify-end mt-2">
+          <a
+            className="btn btn-primary"
+            href={concert.ticketLink}
+            target="_blank"
+          >
+            Purchase Tickets
+          </a>
         </div>
       </div>
     </div>
