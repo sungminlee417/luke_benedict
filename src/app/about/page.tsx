@@ -4,14 +4,12 @@ import image from "../../../public/images/piano-play.png";
 import { attributes } from "../../../content/about-page.md";
 
 interface Paragraph {
-  paragraph: {
-    text: string;
-  };
+  text: string;
 }
 
 const About = () => {
-  const { paragraphs } = attributes as { paragraphs: string[] };
-  console.log(paragraphs);
+  const { paragraphs } = attributes as { paragraphs: Paragraph[] };
+
   return (
     <section className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
       <h2 className="font-bold text-4xl text-center mb-10">Biography</h2>
