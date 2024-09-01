@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="hero min-h-screen relative">
+    <section className="hero min-h-screen relative">
       <Image
         src={backgroundImage}
         alt="Background Image"
@@ -24,7 +24,7 @@ const Hero = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

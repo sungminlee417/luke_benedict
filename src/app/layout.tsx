@@ -4,6 +4,7 @@ import "./globals.css";
 import MainNav from "@/layouts/MainNav";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import Footer from "@/components/Footer";
 config.autoAddCss = false;
 
 const inter = Inter({ subsets: ["latin"] });
@@ -32,6 +33,7 @@ export default function RootLayout({
         ></script>
         <MainNav />
         <main>{children}</main>
+        <Footer />
         <script
           dangerouslySetInnerHTML={{
             __html: `

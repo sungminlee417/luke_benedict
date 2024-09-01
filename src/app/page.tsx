@@ -1,7 +1,8 @@
 import Hero from "@/components/home/Hero";
 import About from "@/components/home/About";
-import Footer from "@/components/Footer";
 import Album from "@/components/home/Album";
+import UpcomingConcerts from "@/components/home/UpcomingConcerts";
+import ContactForm from "@/components/home/ContactForm";
 
 export default function Home() {
   return (
@@ -9,7 +10,8 @@ export default function Home() {
       <Hero />
       <About />
       <Album />
-      <Footer />
+      <UpcomingConcerts />
+      <ContactForm />
     </>
   );
 }
