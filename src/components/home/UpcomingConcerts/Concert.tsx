@@ -1,6 +1,15 @@
 import React from "react";
 
-const Concert = ({ concert }) => {
+interface ConcertProps {
+  concert: {
+    title: string;
+    datetime: string;
+    address: string;
+    ticketLink: string;
+  };
+}
+
+const Concert = ({ concert }: ConcertProps) => {
   return (
     <div className="card bg-base-100 w-96 shadow-xl">
       <div className="card-body">
