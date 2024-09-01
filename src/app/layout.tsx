@@ -28,6 +28,7 @@ export default function RootLayout({
         <script
           src="https://kit.fontawesome.com/db311df611.js"
           crossOrigin="anonymous"
+          async
         ></script>
         <MainNav />
         <main>{children}</main>
