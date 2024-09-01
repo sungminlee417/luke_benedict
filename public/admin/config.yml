@@ -16,13 +16,15 @@ collections:
       - label: "Upcoming Concerts"
         name: "concerts"
         file: "content/upcoming-concerts.md"
-        label: "Upcoming Concerts"
-        widget: "list"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Date and Time", name: "datetime", widget: "datetime" }
-          - { label: "Address", name: "address", widget: "string" }
-          - { label: "Ticket Link", name: "ticketLink", widget: "string" }
+          - label: "Concerts"
+            name: "concerts"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date and Time", name: "datetime", widget: "datetime" }
+              - { label: "Address", name: "address", widget: "string" }
+              - { label: "Ticket Link", name: "ticketLink", widget: "string" }
       - label: "About Page"
         name: "about-page"
         file: "content/about-page.md"
