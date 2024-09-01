@@ -23,8 +23,8 @@ collections:
           - { label: "Address", name: "address", widget: "string" }
           - { label: "Ticket Link", name: "ticketLink", widget: string }
       - label: "About Page"
-        name: "landing-about"
-        file: "content/landing-about.md"
+        name: "about-page"
+        file: "content/about-page.md"
         widget: list
         fields:
           - { label: "Paragraph", name: "paragraph", widget: "string" }
