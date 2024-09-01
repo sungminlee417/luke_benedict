@@ -26,7 +26,7 @@ const About = () => {
           piano performance at Eastman School of Music and Boston Conservatory
           of Music, where he studied under Rebecca Penneys and Michael Lewin. He
           also earned degrees in music composition at Lynn University under the
-          tutelage of Thomas McKinley.{" "}
+          tutelage of Thomas McKinley.
         </p>
         <Link href="/about">
           <p
