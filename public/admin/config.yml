@@ -7,9 +7,9 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-      - label: "About"
-        name: "about"
-        file: "content/about.md"
+      - label: "Landing Page About Section"
+        name: "landing-about"
+        file: "content/landing-about.md"
         fields:
           - { label: "Header", name: "header", widget: "string" }
           - { label: "Content", name: "content", widget: "string" }
@@ -22,3 +22,10 @@ collections:
           - { label: "Date and Time", name: "datetime", widget: datetime }
           - { label: "Address", name: "address", widget: "string" }
           - { label: "Ticket Link", name: "ticketLink", widget: string }
+      - label: "About Page"
+        name: "landing-about"
+        file: "content/landing-about.md"
+        widget: list
+        fields:
+          - { label: "Header", name: "header", widget: "string" }
+          - { label: "Content", name: "content", widget: "string" }

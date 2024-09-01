@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import image from "../../../public/images/About-Me-Photo-1.png";
-import { attributes } from "../../../content/about.md";
+import { attributes } from "../../../content/landing-about.md";
 
 const About = () => {
   const { header, content } = attributes;
