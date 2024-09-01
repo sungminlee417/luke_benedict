@@ -27,5 +27,4 @@ collections:
         file: "content/landing-about.md"
         widget: list
         fields:
-          - { label: "Header", name: "header", widget: "string" }
-          - { label: "Content", name: "content", widget: "string" }
+          - { label: "Paragraph", name: "paragraph", widget: "string" }
