@@ -31,9 +31,11 @@ export default function RootLayout({
           crossOrigin="anonymous"
           async
         ></script>
-        <MainNav />
-        <main>{children}</main>
-        <Footer />
+        <div className="flex flex-col h-screen">
+          <MainNav />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </div>
         <script
           dangerouslySetInnerHTML={{
             __html: `

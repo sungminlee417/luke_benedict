@@ -1,44 +1,51 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import image from "../../../public/images/About-Me-Photo-1.png";
+import image from "../../../public/images/piano-play.png";
 
 const About = () => {
   return (
-    <section className="pt-20 flex gap-[60px] lg:flex-col lg:items-center mx-auto max-w-[1242px] px-5">
-      <h2 className="text-[40px] font-bold text-black mb-[60px] lg:mb-[20px]  text-center hidden lg:block">
-        About Me
-      </h2>
-      <div className="relative">
-        <Image
-          src={image}
-          alt="Picture of the author"
-          width={518}
-          height={776}
-        />
-      </div>
-      <article>
-        <h2 className="text-[40px]  font-bold text-black mb-[25px] text-center lg:hidden sm:text-[20px]">
-          About Me
-        </h2>
-        <p className="text-[32px] mb-[52px] text-black max-w-[569px] xl:text-[24px] lg:text-[32px] md:text-[20px] sm:text-[15px]">
-          Luke Benedict is a pianist and composer born in 1996, who studied
-          piano performance at Eastman School of Music and Boston Conservatory
-          of Music, where he studied under Rebecca Penneys and Michael Lewin. He
-          also earned degrees in music composition at Lynn University under the
-          tutelage of Thomas McKinley.
-        </p>
-        <Link href="/about">
-          <p
-            className="text-center text-[32px] hover:opacity-75 text-black sm:text-[15px] transition-all duration-100 ease-in-out
-          "
-          >
-            <span className="border-red-50 border-2 bg-red-800 text-white p-4 ">
-              Read Full Bio
-            </span>
+    <section className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+      <h2 className="font-bold text-4xl text-center mb-10">Biography</h2>
+      <div className="flex flex-col lg:flex-row gap-8">
+        <article className="lg:w-1/2 flex flex-col gap-4">
+          <p>
+            Robert Luke Benedict is a pianist and composer born in 1996, who
+            studied piano performance at Eastman School of Music and Boston
+            Conservatory of Music, where he studied under Rebecca Penneys and
+            Michael Lewin. He also earned degrees in music composition at Lynn
+            University under the tutelage of Thomas McKinley. As a pianist, Luke
+            has had a variety of experiences ranging from orchestral and chamber
+            settings to soloistic performances. He is a commonly commissioned
+            composer in the South Florida area, and has performed his own music
+            across the United States both as a soloist, and as a part of the
+            chamber group,‘The Muse Duo’, consisting of himself and classical
+            guitarist Collin Holloway, touring locations such as New York, South
+            Carolina, Florida, New Hampshire, Tennessee, and Oklahoma.
           </p>
-        </Link>
-      </article>
+          <p>
+            Luke combines the musical languages of the past and present to evoke
+            several different idioms while still maintaining accessibility and
+            originality. These languages range from the Baroque and Classical
+            periods, to the more modern sensibilities of Rock, Serialism, and
+            Minimalism. Rhythmic drive is also a prominent force in his works
+            and takes center stage alongside unique and coloristic
+            instrumentation, pointed motivic direction, and memorable melodic
+            content. Alongside maintaining accessibility for audiences, a
+            primary motivation of his compositional process lies in the
+            enjoyment of the performers who present his works. Not only does
+            Luke facilitate a musical experience that will appeal to a variety
+            of audiences, but he also ensures his music will be gratifying for
+            the performer to execute.
+          </p>
+        </article>
+        <div className="relative lg:w-1/2 w-full">
+          <Image
+            src={image}
+            alt="Picture of the author"
+            className="object-cover w-full h-full rounded-lg"
+          />
+        </div>
+      </div>
     </section>
   );
 };
