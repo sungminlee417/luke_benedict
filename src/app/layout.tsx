@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import MainNav from "@/layouts/MainNav";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +24,10 @@ export default function RootLayout({
         <script
           src="https://identity.netlify.com/v1/netlify-identity-widget.js"
           async
+        ></script>
+        <script
+          src="https://kit.fontawesome.com/db311df611.js"
+          crossOrigin="anonymous"
         ></script>
         <MainNav />
         <main>{children}</main>

@@ -2,6 +2,8 @@ import React from "react";
 import Image from "next/image";
 import albumCover from "../../../public/images/landing-cover-2.png";
 import album from "../../../public/images/muse-duo-gray.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpotify } from "@fortawesome/free-brands-svg-icons";
 
 const Album = () => {
   return (
@@ -18,24 +20,9 @@ const Album = () => {
             Experiments by <br /> Robert Luke Benedict
           </h2>
           <h2 className="text-[#AA1E23] text-xl">Cereusle</h2>
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
             <p className="text-xl">Listen on Spotify</p>
-            <div className="md:hidden">
-              <Image
-                src="/icons/play-spotify.png"
-                alt="Spotify logo"
-                width={70}
-                height={70}
-              />
-            </div>
-            <div className="hidden md:block">
-              <Image
-                src="/icons/play-spotify.png"
-                alt="Spotify logo"
-                width={30}
-                height={30}
-              />
-            </div>
+            <FontAwesomeIcon icon={faSpotify} size="lg" />
           </div>
         </div>
         <div>
