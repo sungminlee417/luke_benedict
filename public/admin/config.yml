@@ -31,3 +31,20 @@ collections:
               - { label: "Date and Time", name: "datetime", widget: "datetime" }
               - { label: "Address", name: "address", widget: "string" }
               - { label: "Ticket Link", name: "ticketLink", widget: "string" }
+      - label: "Gallery"
+        name: "gallery"
+        file: "content/gallery.md"
+        fields:
+          - label: "Photos"
+            name: "photos"
+            widget: "list"
+            fields:
+              - label: "Image"
+                name: "image"
+                widget: "image"
+                allow_multiple: false
+                required: true
+              - label: "Alt Text"
+                name: "alt"
+                widget: "string"
+                required: true
