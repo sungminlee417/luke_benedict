@@ -35,8 +35,8 @@ collections:
         name: "gallery"
         file: "content/gallery.md"
         fields:
-          - label: "Photos"
-            name: "photos"
+          - label: "Images"
+            name: "images"
             widget: "list"
             fields:
               - label: "Image"
