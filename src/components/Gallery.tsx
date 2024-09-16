@@ -1,6 +1,11 @@
 import React from "react";
 import Masonry from "react-masonry-css";
 
+interface Image {
+  src: string;
+  alt: string;
+}
+
 const Gallery = () => {
   const breakpointColumnsObj = {
     default: 4,
@@ -8,6 +13,9 @@ const Gallery = () => {
     700: 2,
     500: 1,
   };
+
+  const images: Image[] = [];
+
   return (
     <Masonry
       breakpointCols={breakpointColumnsObj}

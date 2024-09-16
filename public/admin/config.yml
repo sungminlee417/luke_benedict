@@ -7,12 +7,18 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-      - label: "Landing Page About Section"
-        name: "landing-about"
-        file: "content/landing-about.md"
+      - label: "Biography"
+        name: "biography"
+        file: "content/biography.md"
         fields:
-          - { label: "Header", name: "header", widget: "string" }
-          - { label: "Content", name: "content", widget: "string" }
+          - label: "Header"
+            name: "header"
+            widget: "string"
+          - label: "Paragraphs"
+            name: "paragraphs"
+            widget: "list"
+            fields:
+              - { label: "Text", name: "text", widget: "string" }
       - label: "Upcoming Concerts"
         name: "concerts"
         file: "content/upcoming-concerts.md"
@@ -25,12 +31,3 @@ collections:
               - { label: "Date and Time", name: "datetime", widget: "datetime" }
               - { label: "Address", name: "address", widget: "string" }
               - { label: "Ticket Link", name: "ticketLink", widget: "string" }
-      - label: "Biography"
-        name: "biography"
-        file: "content/biography.md"
-        fields:
-          - label: "Paragraphs"
-            name: "paragraphs"
-            widget: "list"
-            fields:
-              - { label: "Text", name: "text", widget: "string" }
