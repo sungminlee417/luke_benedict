@@ -5,7 +5,7 @@ import Masonry from "react-masonry-css";
 import { attributes } from "../../content/gallery.md";
 
 interface Image {
-  src: string;
+  image: string;
   alt: string;
 }
 
@@ -28,7 +28,7 @@ const Gallery = () => {
       >
         {images.map((image, index) => (
           <div key={index}>
-            <img src={image.src} alt={image.alt || "gallery image"} />
+            <img src={image.image} alt={image.alt || "gallery image"} />
           </div>
         ))}
       </Masonry>
