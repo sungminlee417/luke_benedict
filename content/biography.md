@@ -1,6 +1,7 @@
 ---
+header: Robert Luke Benedict
 paragraphs:
-  - text: Robert Luke Benedict is a pianist and composer born in 1996, who
+  - text: is a pianist and composer born in 1996, who
       studied piano performance at Eastman School of Music and Boston
       Conservatory of Music, where he studied under Rebecca Penneys and
       Michael Lewin. He also earned degrees in music composition at Lynn

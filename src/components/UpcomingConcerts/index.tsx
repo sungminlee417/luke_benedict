@@ -1,5 +1,5 @@
 import React from "react";
-import { attributes } from "../../../../content/upcoming-concerts.md";
+import { attributes } from "../../../content/upcoming-concerts.md";
 import Concert from "./Concert";
 
 interface Concert {

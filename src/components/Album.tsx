@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import albumCover from "../../../public/images/landing-cover-2.png";
-import album from "../../../public/images/muse-duo-gray.png";
+import albumCover from "../../public/images/landing-cover-2.png";
+import album from "../../public/images/muse-duo-gray.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpotify } from "@fortawesome/free-brands-svg-icons";
 

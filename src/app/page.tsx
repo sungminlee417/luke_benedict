@@ -1,14 +1,14 @@
-import Hero from "@/components/home/Hero";
-import About from "@/components/home/About";
-import Album from "@/components/home/Album";
-import UpcomingConcerts from "@/components/home/UpcomingConcerts";
-import ContactForm from "@/components/home/ContactForm";
+import Hero from "@/components/Hero";
+import Biography from "@/components/Biography";
+import Album from "@/components/Album";
+import UpcomingConcerts from "@/components/UpcomingConcerts";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <About />
+      <Biography />
       <Album />
       <UpcomingConcerts />
       <ContactForm />
