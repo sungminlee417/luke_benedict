@@ -25,7 +25,9 @@ const Biography = () => {
           className="rounded-xl shadow-xl"
         />
         <div className="flex flex-col gap-4">
-          <h2 className="font-bold text-2xl lg:text-2xl">{header}</h2>
+          <h2 className="font-bold text-2xl lg:text-2xl text-accent">
+            {header}
+          </h2>
           <article className="flex flex-col gap-4">
             {paragraphs.map((paragraph, i) => (
               <p key={i}>{paragraph.text}</p>

@@ -16,7 +16,18 @@ import {
 } from "../EmblaCarousel/EmblaCarouselDotButton";
 
 const OPTIONS: EmblaOptionsType = { loop: true, duration: 30 };
-const SLIDES = [{}, {}, {}, {}];
+const SLIDES = [
+  {
+    type: "Video URL",
+    url: "https://youtu.be/536i7ij_RS8?feature=shared",
+    header: "Grafico de la Petenera",
+  },
+  {
+    type: "Video URL",
+    url: "https://www.youtube.com/watch?v=DuvWZ6DD7zc",
+    header: "a sense of loss",
+  },
+];
 
 const Discography = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS, [Fade()]);
@@ -30,44 +41,46 @@ const Discography = () => {
   } = usePrevNextButtons(emblaApi);
 
   return (
-    <section className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-      <div className="embla">
-        <div className="embla__viewport" ref={emblaRef}>
-          <div className="embla__container">
-            {SLIDES.map((slide, index) => (
-              <div className="embla__slide" key={index}>
-                <DiscographySlide />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="embla__controls">
-          <div className="embla__buttons">
-            <PrevButton
-              onClick={onPrevButtonClick}
-              disabled={prevBtnDisabled}
-            />
-            <NextButton
-              onClick={onNextButtonClick}
-              disabled={nextBtnDisabled}
-            />
+    <div className="bg-primary">
+      <section className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="embla">
+          <div className="embla__viewport" ref={emblaRef}>
+            <div className="embla__container">
+              {SLIDES.map((slide, index) => (
+                <div className="embla__slide" key={index}>
+                  <DiscographySlide slide={slide} />
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="embla__dots">
-            {scrollSnaps.map((_, index) => (
-              <DotButton
-                key={index}
-                onClick={() => onDotButtonClick(index)}
-                className={"embla__dot".concat(
-                  index === selectedIndex ? " embla__dot--selected" : ""
-                )}
+          <div className="embla__controls">
+            <div className="embla__buttons">
+              <PrevButton
+                onClick={onPrevButtonClick}
+                disabled={prevBtnDisabled}
               />
-            ))}
+              <NextButton
+                onClick={onNextButtonClick}
+                disabled={nextBtnDisabled}
+              />
+            </div>
+
+            <div className="embla__dots">
+              {scrollSnaps.map((_, index) => (
+                <DotButton
+                  key={index}
+                  onClick={() => onDotButtonClick(index)}
+                  className={"embla__dot".concat(
+                    index === selectedIndex ? " embla__dot--selected" : ""
+                  )}
+                />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

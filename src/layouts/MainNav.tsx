@@ -9,9 +9,9 @@ const LINKS = [
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-neutral">
       <div className="flex-1">
-        <Link href="/" className="btn btn-ghost text-xl">
+        <Link href="/" className="btn btn-ghost text-xl text-base-100">
           Luke Benedict
         </Link>
       </div>
@@ -19,7 +19,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">
           {LINKS.map((link, i) => (
             <li key={i}>
-              <Link href={link.path}>{link.name}</Link>
+              <Link className="text-base-100" href={link.path}>
+                {link.name}
+              </Link>
             </li>
           ))}
         </ul>
