@@ -26,9 +26,36 @@ const Gallery = () => {
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        {images.map((image, index) => (
-          <div key={index}>
-            <img src={image.image} alt={image.alt || "gallery image"} />
+        {images.map((image, i) => (
+          <div key={i}>
+            <button
+              onClick={() => {
+                const modal = document.getElementById(
+                  `gallery-image-modal-${i}`
+                );
+                if (modal) {
+                  (modal as HTMLDialogElement).showModal();
+                }
+              }}
+            >
+              <img src={image.image} alt={image.alt || "gallery image"} />
+            </button>
+            <dialog id={`gallery-image-modal-${i}`} className="modal">
+              <div className="modal-box p-0">
+                <div className="modal-action w-full m-0">
+                  <form method="dialog" className="w-full h-full">
+                    <img
+                      src={image.image}
+                      alt={image.alt || "gallery image"}
+                      className="w-full h-full object-cover"
+                    />
+                    <button className="btn absolute top-0 right-0">
+                      Close
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </dialog>
           </div>
         ))}
       </Masonry>
