@@ -41,7 +41,7 @@ const Discography = () => {
   } = usePrevNextButtons(emblaApi);
 
   return (
-    <div className="bg-primary">
+    <div id="discography" className="bg-primary">
       <section className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="embla">
           <div className="embla__viewport" ref={emblaRef}>

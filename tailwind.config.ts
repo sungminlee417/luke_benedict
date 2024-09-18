@@ -6,8 +6,8 @@ const config: Config = {
     extend: {
       colors: {
         primary: "#14a76c", // Bright Green
-        accent: "#ff652f", // Bright Orange
-        secondary: "#ffe400", // Bright Yellow
+        secondary: "#ff652f", // Bright Orange
+        accent: "#ffe400", // Bright Yellow
         neutral: "#272727", // Dark Gray
         muted: "#747474", // Medium Gray
       },
@@ -19,8 +19,8 @@ const config: Config = {
       {
         customtheme: {
           primary: "#14a76c", // Bright Green
-          secondary: "#ffe400", // Bright Yellow
-          accent: "#ff652f", // Bright Orange
+          secondary: "#ff652f", // Bright Orange
+          accent: "#ffe400", // Bright Yellow
           neutral: "#272727", // Dark Gray
           muted: "#747474", // Medium Gray
           "base-100": "#FFFFFF", // Base white background

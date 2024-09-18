@@ -1,11 +1,13 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import backgroundImage from "../../public/images/Landing-Page-Photo-1.jpg";
-import Link from "next/link";
+import { scrollToSection } from "@/helperFunctions/ui";
 
 const Hero = () => {
   return (
-    <section className="hero min-h-screen relative">
+    <section id="hero" className="hero min-h-screen relative">
       <Image
         src={backgroundImage}
         alt="Background Image"
@@ -19,9 +21,12 @@ const Hero = () => {
         <div className="max-w-md">
           <h1 className="mb-5 text-5xl font-bold">Robert Luke Benedict</h1>
           <p className="mb-5">Classical Pianist and Composer</p>
-          <Link href="/discography" className="btn btn-primary">
+          <button
+            onClick={() => scrollToSection("discography")}
+            className="btn btn-primary"
+          >
             Discover His Music
-          </Link>
+          </button>
         </div>
       </div>
     </section>

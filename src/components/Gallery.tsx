@@ -26,7 +26,10 @@ const Gallery = () => {
   const closeModal = () => setActiveModal(null);
 
   return (
-    <section className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 relative">
+    <section
+      id="gallery"
+      className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 relative"
+    >
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

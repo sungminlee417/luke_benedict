@@ -16,7 +16,10 @@ const Biography = () => {
   const { header, paragraphs } = attributes as AboutPageAttributes;
 
   return (
-    <section className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <section
+      id="biography"
+      className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8"
+    >
       <div className="flex flex-col lg:flex-row gap-10 w-100 justify-between">
         <Image
           src={image}
@@ -25,7 +28,7 @@ const Biography = () => {
           className="rounded-xl shadow-xl"
         />
         <div className="flex flex-col gap-4">
-          <h2 className="font-bold text-2xl lg:text-2xl text-accent">
+          <h2 className="font-bold text-2xl lg:text-2xl text-secondary">
             {header}
           </h2>
           <article className="flex flex-col gap-4">
