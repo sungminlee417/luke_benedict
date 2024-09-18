@@ -13,7 +13,7 @@ const LINKS = [
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-neutral fixed z-10 w-full">
+    <div className="navbar bg-neutral fixed z-20 w-full">
       <div className="flex-1">
         <button
           onClick={() => scrollToSection("hero")}
