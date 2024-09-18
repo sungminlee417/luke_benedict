@@ -2,64 +2,51 @@
 
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-interface FormData {
-  name: string;
-  email_id: string;
-  phone_number: string;
-  message: string;
-}
+const CONTACT_FORM_SCHEMA = yup.object().shape({
+  name: yup.string().required("Name is required"),
+  email: yup
+    .string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  phone: yup
+    .string()
+    .matches(/^[0-9]+$/, "Phone number must be numeric")
+    .required("Phone number is required"),
+  message: yup.string().required("Message is required"),
+});
 
 const ContactForm = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email_id: "",
-    phone_number: "",
-    message: "",
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(CONTACT_FORM_SCHEMA),
   });
 
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = event.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = (formData: any) => {
     setLoading(true);
-    event.preventDefault();
-    const formDataRecord: Record<string, unknown> = {
-      from_name: formData.name,
-      email_id: formData.email_id,
-      phone_number: formData.phone_number,
-      message: formData.message,
-    };
+
     emailjs
       .send(
-        "service_6u3gsw9",
-        "template_sp4f5up",
-        formDataRecord,
-        "eawBAYORqZ3KiK0H3"
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        formData,
+        process.env.NEXT_PUBLIC_EMAILJS_USER_ID!
       )
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         setLoading(false);
+        reset();
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         setLoading(false);
-      })
-      .finally(() => {
-        setFormData({
-          name: "",
-          email_id: "",
-          phone_number: "",
-          message: "",
-        });
       });
   };
 
@@ -71,28 +58,28 @@ const ContactForm = () => {
             <h2 className="text-center lg:text-left text-2xl font-bold sm:text-3xl mb-2">
               Contact Me
             </h2>
-
             <p className="w-full text-center lg:text-left text-lg">
-              If you would like to get in touch with Luke Benedict to inquire
-              about performances, commission a composition, schedule a private
-              lesson (for piano, composition, or music theory!), or ask about
-              anything else music related, please fill out the following contact
-              form.
+              If you would like to get in touch, please fill out the following
+              contact form.
             </p>
           </div>
 
           <div className="card p-8 lg:col-span-3 lg:p-12">
-            <form action="#" className="space-y-4">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div>
                 <label className="sr-only" htmlFor="name">
                   Name
                 </label>
                 <input
+                  {...register("name")}
                   className="w-full input input-bordered p-3 text-sm"
                   placeholder="Name"
                   type="text"
                   id="name"
                 />
+                {errors.name && (
+                  <small className="text-red-600">{errors.name.message}</small>
+                )}
               </div>
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -101,11 +88,17 @@ const ContactForm = () => {
                     Email
                   </label>
                   <input
+                    {...register("email")}
                     className="w-full input input-bordered p-3 text-sm"
                     placeholder="Email address"
                     type="email"
                     id="email"
                   />
+                  {errors.email && (
+                    <small className="text-red-600">
+                      {errors.email.message}
+                    </small>
+                  )}
                 </div>
 
                 <div>
@@ -113,11 +106,17 @@ const ContactForm = () => {
                     Phone
                   </label>
                   <input
+                    {...register("phone")}
                     className="w-full input input-bordered p-3 text-sm"
                     placeholder="Phone Number"
                     type="tel"
                     id="phone"
                   />
+                  {errors.phone && (
+                    <small className="text-red-600">
+                      {errors.phone.message}
+                    </small>
+                  )}
                 </div>
               </div>
 
@@ -125,18 +124,26 @@ const ContactForm = () => {
                 <label className="sr-only" htmlFor="message">
                   Message
                 </label>
-
                 <textarea
+                  {...register("message")}
                   className="w-full textarea textarea-bordered p-3 text-sm"
                   placeholder="Message"
                   rows={8}
                   id="message"
                 ></textarea>
+                {errors.message && (
+                  <small className="text-red-600">
+                    {errors.message.message}
+                  </small>
+                )}
               </div>
 
               <div className="mt-4">
-                <button type="submit" className="btn btn-primary">
-                  Send Enquiry
+                <button
+                  type="submit"
+                  className={`btn btn-primary ${loading ? "loading" : ""}`}
+                >
+                  {loading ? "Sending..." : "Send Enquiry"}
                 </button>
               </div>
             </form>
