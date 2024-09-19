@@ -12,7 +12,7 @@ interface ConcertProps {
 
 const Concert = ({ concert }: ConcertProps) => {
   return (
-    <div className="card bg-base-100 w-96 shadow-xl">
+    <div className="card bg-base-100 max-w-96 shadow-xl">
       <div className="card-body">
         <h3 className="card-title">{concert.title}</h3>
         <p>{concert.address}</p>
