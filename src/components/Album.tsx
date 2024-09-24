@@ -18,7 +18,7 @@ const Album = () => {
         <div className="absolute flex flex-col lg:flex-row gap-10 items-center justify-between top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div className="flex flex-col gap-6 font-bold">
             <h2 className="text-2xl">
-              Experiments by <br /> Robert Luke Benedict
+              Experiments by <br /> Luke Benedict
             </h2>
             <h2 className="text-[#AA1E23] text-xl">Cereusle</h2>
             <div className="flex items-center gap-2">

@@ -1,5 +1,5 @@
 ---
-header: Robert Luke Benedict
+header: Luke Benedict
 paragraphs:
   - text: is a pianist and composer born in 1996, who
       studied piano performance at Eastman School of Music and Boston
