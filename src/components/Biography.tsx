@@ -25,13 +25,13 @@ const Biography = () => {
           src={image}
           alt="Picture of Luke Benedict"
           height={1242}
-          className="rounded-xl shadow-xl"
+          className="rounded-xl shadow-xl w-full object-cover"
         />
         <div className="flex flex-col gap-4">
-          <h2 className="font-bold text-2xl lg:text-2xl text-secondary">
+          <h2 className="font-bold text-2xl lg:text-4xl text-secondary">
             {header}
           </h2>
-          <article className="flex flex-col gap-4">
+          <article className="flex flex-col gap-4 text-xl">
             {paragraphs.map((paragraph, i) => (
               <p key={i}>{paragraph.text}</p>
             ))}

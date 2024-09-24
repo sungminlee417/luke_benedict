@@ -51,7 +51,7 @@ const Navbar = () => {
                 <li key={i}>
                   <button
                     onClick={() => handleLinkClick(link.id)}
-                    className="focus:text-secondary"
+                    className="focus:text-secondary text-lg"
                   >
                     {link.name}
                   </button>
@@ -62,7 +62,7 @@ const Navbar = () => {
         </div>
         <button
           onClick={() => scrollToSection("hero")}
-          className="btn btn-ghost text-xl text-base-100"
+          className="btn btn-ghost text-2xl text-base-100"
         >
           Luke Benedict
         </button>
@@ -70,7 +70,7 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           {LINKS.map((link, i) => (
-            <li key={i}>
+            <li key={i} className="text-lg">
               <button
                 onClick={() => scrollToSection(link.id)}
                 className="text-base-100 focus:text-secondary"

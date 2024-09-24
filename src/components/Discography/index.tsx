@@ -14,22 +14,21 @@ import {
   DotButton,
   useDotButton,
 } from "../EmblaCarousel/EmblaCarouselDotButton";
+import { attributes } from "../../../content/recordings.md";
+import { StaticImageData } from "next/image";
 
 const OPTIONS: EmblaOptionsType = { loop: true, duration: 30 };
-const SLIDES = [
-  {
-    type: "Video URL",
-    url: "https://youtu.be/536i7ij_RS8?feature=shared",
-    header: "Grafico de la Petenera",
-  },
-  {
-    type: "Video URL",
-    url: "https://www.youtube.com/watch?v=DuvWZ6DD7zc",
-    header: "a sense of loss",
-  },
-];
+
+interface Recording {
+  header: string;
+  type: string;
+  url: string;
+  image?: StaticImageData;
+}
 
 const Discography = () => {
+  const { recordings } = attributes as { recordings: Recording[] };
+
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS, [Fade()]);
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
@@ -46,9 +45,9 @@ const Discography = () => {
         <div className="embla">
           <div className="embla__viewport" ref={emblaRef}>
             <div className="embla__container">
-              {SLIDES.map((slide, index) => (
+              {recordings.map((recording, index) => (
                 <div className="embla__slide" key={index}>
-                  <DiscographySlide slide={slide} />
+                  <DiscographySlide slide={recording} />
                 </div>
               ))}
             </div>

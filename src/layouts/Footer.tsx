@@ -15,7 +15,6 @@ const LINKS = [
     icon: faInstagram,
     link: "https://www.instagram.com/robert_luke_benedict/",
   },
-  { icon: faTwitter, link: "https://x.com/RobertLBenedict" },
   {
     icon: faYoutube,
     link: "https://www.youtube.com/channel/UC6MX_fM6ewQSVmRc_Mmlr9g",
