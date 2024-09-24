@@ -1,8 +1,10 @@
 backend:
   name: git-gateway
   branch: main
+
 media_folder: public/img
 public_folder: img
+
 collections:
   - name: "pages"
     label: "Pages"
@@ -19,6 +21,7 @@ collections:
             widget: "list"
             fields:
               - { label: "Text", name: "text", widget: "string" }
+
       - label: "Upcoming Concerts"
         name: "concerts"
         file: "content/upcoming-concerts.md"
@@ -31,30 +34,32 @@ collections:
               - { label: "Date and Time", name: "datetime", widget: "datetime" }
               - { label: "Address", name: "address", widget: "string" }
               - { label: "Ticket Link", name: "ticketLink", widget: "string" }
+
       - label: "Recordings"
         name: "recordings"
         file: "content/recordings.md"
-        fields:
-      - label: "Recordings"
-        name: "recordings"
-        widget: "list"
-        fields:
-          - label: "Type"
-            name: "type"
-            widget: "select"
-            options:
-              - "Video URL"
-              - "Image Link"
-          - label: "URL"
-            name: "url"
-            widget: "string"
-          - label: "Header"
-            name: "header"
-            widget: "string"
-          - label: "Image (required for Image Links only)"
-            name: "image"
-            widget: "image"
-            hint: "Required only for Image Links."
+        fields: # This needs to be properly indented and structured as an array
+          - label: "Recordings List"
+            name: "recordings"
+            widget: "list"
+            fields:
+              - label: "Type"
+                name: "type"
+                widget: "select"
+                options:
+                  - "Video URL"
+                  - "Image Link"
+              - label: "URL"
+                name: "url"
+                widget: "string"
+              - label: "Header"
+                name: "header"
+                widget: "string"
+              - label: "Image (required for Image Links only)"
+                name: "image"
+                widget: "image"
+                hint: "Required only for Image Links."
+
       - label: "Gallery"
         name: "gallery"
         file: "content/gallery.md"
