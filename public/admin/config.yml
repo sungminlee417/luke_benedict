@@ -54,7 +54,6 @@ collections:
           - label: "Image (required for Image Links only)"
             name: "image"
             widget: "image"
-            optional: true
             hint: "Required only for Image Links."
       - label: "Gallery"
         name: "gallery"
