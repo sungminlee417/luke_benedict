@@ -35,25 +35,29 @@ collections:
         name: "recordings"
         file: "content/recordings.md"
         fields:
-          - label: "Recordings"
-            name: "recordings"
-            widget: "list"
-            fields:
-              - label: "Type"
-                name: "type"
-                widget: "select"
-                options:
-                  - "Video URL"
-                  - "Image Link"
-              - label: "URL"
-                name: "url"
-                widget: "string"
-              - label: "Header"
-                name: "header"
-                widget: "string"
-              - label: "Image (optional)"
-                name: "image"
-                widget: "image" # Only applicable for "Image Link" type
+      - label: "Recordings"
+        name: "recordings"
+        widget: "list"
+        fields:
+          - label: "Type"
+            name: "type"
+            widget: "select"
+            options:
+              - "Video URL"
+              - "Image Link"
+          - label: "URL"
+            name: "url"
+            widget: "string"
+            required: true # Make URL required for all types
+          - label: "Header"
+            name: "header"
+            widget: "string"
+            required: true # Make header required for all types
+          - label: "Image (required for Image Links only)"
+            name: "image"
+            widget: "image"
+            required: false # Optional by default
+            hint: "Required only for Image Links."
       - label: "Gallery"
         name: "gallery"
         file: "content/gallery.md"

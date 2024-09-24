@@ -14,20 +14,30 @@ import {
   DotButton,
   useDotButton,
 } from "../EmblaCarousel/EmblaCarouselDotButton";
-import { attributes } from "../../../content/recordings.md";
-import { StaticImageData } from "next/image";
+import { attributes } from "../../../content/";
 
 const OPTIONS: EmblaOptionsType = { loop: true, duration: 30 };
-
-interface Recording {
-  header: string;
-  type: string;
-  url: string;
-  image?: StaticImageData;
-}
+const SLIDES = [
+  {
+    type: "Video URL",
+    url: "https://youtu.be/536i7ij_RS8?feature=shared",
+    header: "Grafico de la Petenera",
+  },
+  {
+    type: "Video URL",
+    url: "https://www.youtube.com/watch?v=DuvWZ6DD7zc",
+    header: "a sense of loss",
+  },
+  // {
+  //   type: "Image Link",
+  //   url: "https://open.spotify.com/track/6nnlcvP2l9D7ifwy2Q1xB9?si=y7jFGtYOTEmZaoOfek6avA&context=spotify%3Aalbum%3A4aCp1AQzt6L8nS9TOiw5oK",
+  //   image: albumImage,
+  //   header: "Extend",
+  // },
+];
 
 const Discography = () => {
-  const { recordings } = attributes as { recordings: Recording[] };
+  const { discography as discographyList } = attributes
 
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS, [Fade()]);
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -45,9 +55,9 @@ const Discography = () => {
         <div className="embla">
           <div className="embla__viewport" ref={emblaRef}>
             <div className="embla__container">
-              {recordings.map((recording, index) => (
+              {SLIDES.map((slide, index) => (
                 <div className="embla__slide" key={index}>
-                  <DiscographySlide slide={recording} />
+                  <DiscographySlide slide={slide} />
                 </div>
               ))}
             </div>
