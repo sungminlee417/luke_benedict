@@ -13,7 +13,7 @@ const LINKS = [
   { icon: faFacebook, link: "https://www.facebook.com/luke.benedict.9/" },
   {
     icon: faInstagram,
-    link: "https://www.instagram.com/robert_luke_benedict/",
+    link: "https://www.instagram.com/luke__benedict/",
   },
   {
     icon: faYoutube,
