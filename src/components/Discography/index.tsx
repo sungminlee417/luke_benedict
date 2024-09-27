@@ -25,12 +25,6 @@ interface Recording {
 }
 
 const OPTIONS: EmblaOptionsType = { loop: true, duration: 30 };
-// {
-//   type: "Image Link",
-//   url: "https://open.spotify.com/track/6nnlcvP2l9D7ifwy2Q1xB9?si=y7jFGtYOTEmZaoOfek6avA&context=spotify%3Aalbum%3A4aCp1AQzt6L8nS9TOiw5oK",
-//   image: albumImage,
-//   header: "Extend",
-// },
 
 const Discography = () => {
   const { recordings } = attributes as { recordings: Recording[] };

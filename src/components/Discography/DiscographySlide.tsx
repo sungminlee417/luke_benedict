@@ -13,6 +13,7 @@ interface DiscographySlideProps {
 }
 
 const DiscographySlide = ({ slide }: DiscographySlideProps) => {
+  console.log(slide?.image);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -42,7 +43,7 @@ const DiscographySlide = ({ slide }: DiscographySlideProps) => {
       {slide.type === "Image Link" && slide.image && (
         <div className="relative flex-grow">
           <Image
-            src={slide.image.src}
+            src={slide.image}
             alt={slide.header}
             layout="fill"
             objectFit="contain"
