@@ -13,7 +13,6 @@ interface DiscographySlideProps {
 }
 
 const DiscographySlide = ({ slide }: DiscographySlideProps) => {
-  console.log(slide?.image);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
