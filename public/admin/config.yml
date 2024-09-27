@@ -59,6 +59,7 @@ collections:
                 name: "image"
                 widget: "image"
                 hint: "Required only for Image Links."
+                required: false
 
       - label: "Gallery"
         name: "gallery"
