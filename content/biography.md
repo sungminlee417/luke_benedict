@@ -1,29 +1,42 @@
 ---
 header: Luke Benedict
 paragraphs:
-  - text: is a pianist and composer born in 1996, who
-      studied piano performance at Eastman School of Music and Boston
-      Conservatory of Music, where he studied under Rebecca Penneys and
-      Michael Lewin. He also earned degrees in music composition at Lynn
-      University under the tutelage of Thomas McKinley. As a pianist, Luke
-      has had a variety of experiences ranging from orchestral and chamber
-      settings to soloistic performances. He is a commonly commissioned
-      composer in the South Florida area, and has performed his own music
-      across the United States both as a soloist, and as a part of the
-      chamber group,‘The Muse Duo’, consisting of himself and classical
-      guitarist Collin Holloway, touring locations such as New York, South
-      Carolina, Florida, New Hampshire, Tennessee, and Oklahoma.
-  - text: Luke combines the musical languages of the past and present to evoke
-      several different idioms while still maintaining accessibility and
-      originality. These languages range from the Baroque and Classical
-      periods, to the more modern sensibilities of Rock, Serialism, and
-      Minimalism. Rhythmic drive is also a prominent force in his works
-      and takes center stage alongside unique and coloristic
-      instrumentation, pointed motivic direction, and memorable melodic
-      content. Alongside maintaining accessibility for audiences, a
-      primary motivation of his compositional process lies in the
-      enjoyment of the performers who present his works. Not only does
-      Luke facilitate a musical experience that will appeal to a variety
-      of audiences, but he also ensures his music will be gratifying for
-      the performer to execute.
+  - text: "attended Eastman School of Music and Boston Conservatory of Music, where
+      he studied under Rebecca Penneys and Michael Lewin in piano performance.
+      He also earned degrees in music composition at Lynn University under the
+      tutelage of Thomas McKinley. As a pianist, Luke has had a variety of
+      experiences ranging from orchestral and chamber settings to soloistic
+      performances. He is a commonly commissioned composer in the South Florida
+      area, and has performed and toured his own music across the United States
+      both as a soloist, and as a part of a chamber group consisting of himself
+      and classical guitarist Collin Holloway, in ‘The Muse Duo’. "
+  - text: "\tLuke combines the musical languages of the past and present to evoke
+      several idioms while still maintaining clarity and accessibility. These
+      languages range from the Baroque and Classical periods, to the more modern
+      sensibilities of Rock, Serialism, and Minimalism. While rhythmic drive is
+      a prominent force in his works, it is still paired alongside unique and
+      coloristic instrumentation, pointed motivic direction, and memorable
+      melodic content, ensuring an artistic voice that is entirely his own.  "
+  - text: A focus on collaborative efforts is also a central component of Luke’s
+      artistic vision. Recently, his music was featured as a part of Oklahoma
+      City University’s 2023 Guitar Festival featuring ‘The Muse Duo’ and guitar
+      orchestra in the work ‘from the floor’, a world premiere where he was both
+      a soloist and the composer of the work. In 2024, he premiered his work
+      ‘Grafico de la Petenera’, a vocal composition based on the poetry by
+      Garcia Lorca, written specifically for ‘The Muse Duo’ and soprano Sydney
+      Carbo. In both of these ensembles, Luke explores the idiosyncratic nature
+      of the guitar and piano chamber ensemble both as a player and as a
+      composer, while working to emphasize the talents of the performers his
+      music is written for.
+  - text: "His works are composed for a variety of unique settings. The piece ‘Work:
+      for Harpsichord and mixed ensemble’ was premiered at a church during St.
+      Mary’s Baroque Candlelight Series in the summer of 2023. As a part of
+      ‘LOOP Art Critique’, his music was included as a part of a public art
+      gallery, ‘Composers in the Metaverse’, that accented experimental
+      exhibitions in an online environment. Completed by ‘The Muse Duo’,
+      ‘Experiments’, released in the summer of 2023, is an album in which the
+      entire track list is composed entirely of Luke’s original compositions.
+      All of these different artistic avenues express Luke’s compositional
+      language in different ways, and work towards making him a multi-faceted
+      musician built for the modern age of classical music. "
 ---
