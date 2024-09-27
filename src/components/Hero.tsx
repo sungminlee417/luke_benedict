@@ -19,7 +19,7 @@ const Hero = () => {
       <Image
         src={backgroundImage}
         alt="Background Image"
-        layout="fill"
+        fill
         objectFit="cover"
         quality={100}
         className="-z-10"

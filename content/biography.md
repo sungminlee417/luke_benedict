@@ -1,5 +1,5 @@
 ---
-image:
+image: "img/About-Me-Photo-1.png"
 alt: alt
 header: Luke Benedict
 paragraphs:
