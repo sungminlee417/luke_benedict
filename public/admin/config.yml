@@ -40,8 +40,6 @@ collections:
           - label: "Alt Text"
             name: "alt"
             widget: "string"
-
-
       - label: "Upcoming Concerts"
         name: "concerts"
         file: "content/upcoming-concerts.md"
