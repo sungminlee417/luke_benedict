@@ -1,7 +1,10 @@
 ---
+image:
+alt: alt
 header: Luke Benedict
 paragraphs:
-  - text: "attended Eastman School of Music and Boston Conservatory of Music, where
+  - text:
+      "attended Eastman School of Music and Boston Conservatory of Music, where
       he studied under Rebecca Penneys and Michael Lewin in piano performance.
       He also earned degrees in music composition at Lynn University under the
       tutelage of Thomas McKinley. As a pianist, Luke has had a variety of
@@ -10,7 +13,8 @@ paragraphs:
       area, and has performed and toured his own music across the United States
       both as a soloist, and as a part of a chamber group consisting of himself
       and classical guitarist Collin Holloway, in ‘The Muse Duo’. "
-  - text: "\tLuke combines the musical languages of the past and present to evoke
+  - text:
+      "\tLuke combines the musical languages of the past and present to evoke
       several idioms while still maintaining clarity and accessibility. These
       languages range from the Baroque and Classical periods, to the more modern
       sensibilities of Rock, Serialism, and Minimalism. While rhythmic drive is
@@ -28,7 +32,8 @@ paragraphs:
       of the guitar and piano chamber ensemble both as a player and as a
       composer, while working to emphasize the talents of the performers his
       music is written for.
-  - text: "His works are composed for a variety of unique settings. The piece ‘Work:
+  - text:
+      "His works are composed for a variety of unique settings. The piece ‘Work:
       for Harpsichord and mixed ensemble’ was premiered at a church during St.
       Mary’s Baroque Candlelight Series in the summer of 2023. As a part of
       ‘LOOP Art Critique’, his music was included as a part of a public art

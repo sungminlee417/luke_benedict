@@ -34,6 +34,13 @@ collections:
             widget: "list"
             fields:
               - { label: "Text", name: "text", widget: "string" }
+          - label: "Image"
+            name: "image"
+            widget: "image"
+          - label: "Alt Text"
+            name: "alt"
+            widget: "string"
+
 
       - label: "Upcoming Concerts"
         name: "concerts"
@@ -86,8 +93,6 @@ collections:
                 name: "image"
                 widget: "image"
                 allow_multiple: false
-                required: true
               - label: "Alt Text"
                 name: "alt"
                 widget: "string"
-                required: true
