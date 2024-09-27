@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import image from "../../public/images/About-Me-Photo-1.png";
 import { attributes } from "../../content/biography.md";
 
 interface Paragraph {
@@ -8,13 +7,13 @@ interface Paragraph {
 }
 
 interface AboutPageAttributes {
-  image: string,
+  image: string;
   header: string;
   paragraphs: Paragraph[];
 }
 
 const Biography = () => {
-  const { header, paragraphs } = attributes as AboutPageAttributes;
+  const { image, header, paragraphs } = attributes as AboutPageAttributes;
 
   return (
     <section
@@ -25,7 +24,8 @@ const Biography = () => {
         <Image
           src={image}
           alt="Picture of Luke Benedict"
-          height={1242}
+          width={1250}
+          height={1250}
           className="rounded-xl shadow-xl w-full object-cover"
         />
         <div className="flex flex-col gap-4">
