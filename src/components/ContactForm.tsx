@@ -5,6 +5,7 @@ import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { attributes } from "../../content/contact-form.md";
 
 const CONTACT_FORM_SCHEMA = yup.object().shape({
   name: yup.string().required("Name is required"),
@@ -19,7 +20,13 @@ const CONTACT_FORM_SCHEMA = yup.object().shape({
   message: yup.string().required("Message is required"),
 });
 
+interface ContactFormAttributes {
+  header: string;
+  description: string;
+}
+
 const ContactForm = () => {
+  const { header, description } = attributes as ContactFormAttributes;
   const [loading, setLoading] = useState<boolean>(false);
 
   const {
@@ -60,11 +67,10 @@ const ContactForm = () => {
         <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
           <div className="lg:col-span-2 lg:py-12">
             <h2 className="text-center lg:text-left text-2xl font-bold sm:text-3xl mb-2">
-              Contact Me
+              {header}
             </h2>
             <p className="w-full text-center lg:text-left text-lg">
-              If you would like to get in touch, please fill out the following
-              contact form.
+              {description}
             </p>
           </div>
 
