@@ -22,9 +22,6 @@ collections:
           - label: "Background Image"
             name: "backgroundImage"
             widget: "image"
-          - label: "Lower Resolution Background Image"
-            name: "lowerResBackgroundImage"
-            widget: "image"
       - label: "Biography"
         name: "biography"
         file: "content/biography.md"
@@ -43,7 +40,6 @@ collections:
           - label: "Alt Text"
             name: "alt"
             widget: "string"
-
       - label: "Upcoming Concerts"
         name: "concerts"
         file: "content/upcoming-concerts.md"
@@ -56,7 +52,6 @@ collections:
               - { label: "Date and Time", name: "datetime", widget: "datetime" }
               - { label: "Address", name: "address", widget: "string" }
               - { label: "Ticket Link", name: "ticketLink", widget: "string" }
-
       - label: "Recordings"
         name: "recordings"
         file: "content/recordings.md"
@@ -81,9 +76,7 @@ collections:
                 name: "image"
                 widget: "image"
                 hint: "Required only for Image Links."
-
-            required: false
-
+                required: false
       - label: "Gallery"
         name: "gallery"
         file: "content/gallery.md"
@@ -99,7 +92,6 @@ collections:
               - label: "Alt Text"
                 name: "alt"
                 widget: "string"
-
       - label: "Compositions"
         name: "compositions"
         file: "content/compositions.md"
@@ -118,7 +110,6 @@ collections:
               - label: "Alt Text"
                 name: "alt"
                 widget: "string"
-
       - label: "Contact Form"
         name: "contact-form"
         file: "content/contact-form.md"
