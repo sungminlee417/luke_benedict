@@ -19,7 +19,7 @@ const UpcomingConcerts = () => {
       <h2 className="text-center font-bold text-2xl lg:text-4xl mb-10">
         Upcoming Concerts
       </h2>
-      <ul>
+      <ul className="flex flex-wrap">
         {concerts.map((concert: Concert, i: React.Key | null | undefined) => (
           <li key={i}>
             <Concert concert={concert} />

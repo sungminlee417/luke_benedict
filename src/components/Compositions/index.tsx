@@ -1,5 +1,6 @@
 import React from "react";
 import { attributes } from "../../../content/compositions.md";
+import Composition from "./Composition";
 
 interface Composition {
   title: string;
@@ -22,6 +23,15 @@ const Compositions = () => {
       <h2 className="text-center font-bold text-2xl lg:text-4xl mb-10">
         {header}
       </h2>
+      <ul className="flex flex-wrap justify-center">
+        {compositions.map(
+          (composition: Composition, i: React.Key | null | undefined) => (
+            <li key={i}>
+              <Composition composition={composition} />
+            </li>
+          )
+        )}
+      </ul>
     </section>
   );
 };
