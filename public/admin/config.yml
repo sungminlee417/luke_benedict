@@ -97,6 +97,25 @@ collections:
                 name: "alt"
                 widget: "string"
 
+      - label: "Compositions"
+        name: "compositions"
+        file: "content/compositions.md"
+        fields:
+          - label: "Compositions"
+            name: "compositions"
+            widget: "list"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "string"
+              - label: "Image"
+                name: "image"
+                widget: "image"
+                allow_multiple: false
+              - label: "Alt Text"
+                name: "alt"
+                widget: "string"
+
       - label: "Contact Form"
         name: "contact-form"
         file: "content/contact-form.md"

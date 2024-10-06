@@ -5,6 +5,7 @@ import UpcomingConcerts from "@/components/UpcomingConcerts";
 import ContactForm from "@/components/ContactForm";
 import Gallery from "@/components/Gallery";
 import Discography from "@/components/Discography";
+import Compositions from "@/components/Compositions";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <UpcomingConcerts />
       <Discography />
       <Gallery />
+      <Compositions />
       <ContactForm />
     </>
   );
