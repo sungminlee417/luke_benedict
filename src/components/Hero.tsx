@@ -9,10 +9,12 @@ interface HeroData {
   header: string;
   subHeader: string;
   backgroundImage: string;
+  lowerResBackgroundImage: string;
 }
 
 const Hero = () => {
-  const { header, subHeader, backgroundImage } = attributes as HeroData;
+  const { header, subHeader, backgroundImage, lowerResBackgroundImage } =
+    attributes as HeroData;
 
   return (
     <section id="hero" className="hero min-h-screen relative">
@@ -22,6 +24,7 @@ const Hero = () => {
         fill
         objectFit="cover"
         quality={100}
+        priority
         className="-z-10"
       />
       <div className="hero-overlay bg-opacity-60 absolute inset-0 z-0"></div>
