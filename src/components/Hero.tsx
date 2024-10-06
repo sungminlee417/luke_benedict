@@ -24,8 +24,9 @@ const Hero = () => {
         fill
         objectFit="cover"
         quality={100}
-        priority
+        placeholder="blur"
         className="-z-10"
+        blurDataURL={lowerResBackgroundImage}
       />
       <div className="hero-overlay bg-opacity-60 absolute inset-0 z-0"></div>
       <div className="hero-content text-neutral-content text-center z-10 relative">
