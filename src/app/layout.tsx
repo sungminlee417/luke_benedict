@@ -5,6 +5,7 @@ import MainNav from "@/layouts/MainNav";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Footer from "@/layouts/Footer";
+import Head from "next/head";
 
 config.autoAddCss = false;
 
@@ -22,6 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <body className={inter.className}>
         <script
           src="https://identity.netlify.com/v1/netlify-identity-widget.js"
