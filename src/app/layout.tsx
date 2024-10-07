@@ -23,9 +23,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <body className={inter.className}>
         <script
           src="https://identity.netlify.com/v1/netlify-identity-widget.js"
