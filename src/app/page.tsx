@@ -14,10 +14,10 @@ export default function Home() {
       <UpcomingConcerts />
       <Discography />
       <div className="flex flex-col gap-16 md:flex-row justify-between mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="w-1/2">
+        <div className="md:w-1/2">
           <Compositions />
         </div>
-        <div className="w-1/2 self-center">
+        <div className="md:w-1/2 self-center">
           <Gallery />
         </div>
       </div>
