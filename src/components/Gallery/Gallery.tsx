@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
-import { attributes } from "../../content/gallery.md";
-
+import React, { useState } from "react";
+import { attributes } from "../../../content/gallery.md";
 import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import Fade from "embla-carousel-fade";
@@ -10,7 +9,8 @@ import {
   NextButton,
   PrevButton,
   usePrevNextButtons,
-} from "./EmblaCarousel/EmblaCarouselArrowButtons";
+} from "../EmblaCarousel/EmblaCarouselArrowButtons";
+import ImageModal from "./ImageModal"; // Import the modal component
 
 interface Image {
   image: string;
@@ -21,7 +21,6 @@ const OPTIONS: EmblaOptionsType = { loop: true, duration: 30 };
 
 const Gallery = () => {
   const { images } = attributes as { images: Image[] };
-
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS, [Fade()]);
   const {
     prevBtnDisabled,
@@ -29,6 +28,19 @@ const Gallery = () => {
     onPrevButtonClick,
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
+
+  const handleImageClick = (image: Image) => {
+    setSelectedImage(image);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedImage(null);
+  };
 
   return (
     <section id="gallery">
@@ -38,9 +50,10 @@ const Gallery = () => {
             {images.map((image, i) => (
               <div key={i} className="embla__slide">
                 <img
-                  className="w-full object-contain"
+                  className="w-full object-contain cursor-pointer" // Add cursor-pointer for the image
                   src={image.image}
                   alt={image.alt || "gallery image"}
+                  onClick={() => handleImageClick(image)} // Handle image click
                 />
               </div>
             ))}
@@ -59,6 +72,12 @@ const Gallery = () => {
           </div>
         </div>
       </div>
+      <ImageModal
+        isOpen={isModalOpen}
+        imageSrc={selectedImage?.image || ""}
+        altText={selectedImage?.alt || "image"}
+        onClose={handleCloseModal}
+      />
     </section>
   );
 };

@@ -2,7 +2,7 @@ import Hero from "@/components/Hero";
 import Biography from "@/components/Biography";
 import UpcomingConcerts from "@/components/UpcomingConcerts";
 import ContactForm from "@/components/ContactForm";
-import Gallery from "@/components/Gallery";
+import Gallery from "@/components/Gallery/Gallery";
 import Discography from "@/components/Discography";
 import Compositions from "@/components/Compositions";
 
@@ -17,7 +17,7 @@ export default function Home() {
         <div className="w-1/2">
           <Compositions />
         </div>
-        <div className="w-1/2">
+        <div className="w-1/2 self-center">
           <Gallery />
         </div>
       </div>
