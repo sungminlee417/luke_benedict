@@ -61,7 +61,7 @@ const Gallery = () => {
               </div>
             ))}
           </div>
-          <div className="embla__controls">
+          <div className="embla__controls !flex !justify-center">
             <div className="embla__buttons">
               <PrevButton
                 onClick={onPrevButtonClick}
