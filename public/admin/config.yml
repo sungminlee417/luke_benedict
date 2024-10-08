@@ -96,6 +96,9 @@ collections:
         name: "compositions"
         file: "content/compositions.md"
         fields:
+          - label: "Header"
+            name: "header"
+            widget: "string"
           - label: "Compositions"
             name: "compositions"
             widget: "list"
