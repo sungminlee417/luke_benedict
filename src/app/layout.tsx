@@ -5,7 +5,6 @@ import MainNav from "@/layouts/MainNav";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Footer from "@/layouts/Footer";
-import Head from "next/head";
 
 config.autoAddCss = false;
 
