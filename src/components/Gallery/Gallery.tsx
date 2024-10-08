@@ -20,7 +20,7 @@ interface Image {
 const OPTIONS: EmblaOptionsType = { loop: true, duration: 30 };
 
 const Gallery = () => {
-  const { images } = attributes as { images: Image[] };
+  const { header, images } = attributes as { header: string; images: Image[] };
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS, [Fade()]);
   const {
     prevBtnDisabled,
@@ -44,6 +44,9 @@ const Gallery = () => {
 
   return (
     <section id="gallery">
+      <h2 className="font-bold text-2xl lg:text-4xl mb-10 text-center md:text-start">
+        {header}
+      </h2>
       <div className="embla">
         <div className="embla__viewport" ref={emblaRef}>
           <div className="embla__container">

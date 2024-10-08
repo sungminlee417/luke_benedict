@@ -15,7 +15,7 @@ const Compositions = () => {
   return (
     <section id="compositions">
       <h2 className="font-bold text-2xl lg:text-4xl mb-10">{header}</h2>
-      <ul className="flex flex-wrap list-disc">
+      <ul className="list-disc">
         {compositions.map((composition, index) => (
           <li key={index}>
             <div>
