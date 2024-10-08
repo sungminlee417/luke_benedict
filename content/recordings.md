@@ -9,7 +9,7 @@ recordings:
     header: a sense of loss
     image: ""
   - type: Image Link
-    url: https://open.spotify.com/track/6nnlcvP2l9D7ifwy2Q1xB9?si=y7jFGtYOTEmZaoOfek6avA&context=spotify%3Aalbum%3A4aCp1AQzt6L8nS9TOiw5oK
+    url: https://open.spotify.com/track/6nnlcvP2l9D7ifwy2Q1xB9?si=9kojYanAQAya5vpBSV7jSA
     image: img/extend_album.jpeg
     header: Extend
 ---
