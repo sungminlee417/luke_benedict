@@ -17,7 +17,7 @@ export default function Home() {
         <div className="md:w-1/2">
           <Compositions />
         </div>
-        <div className="md:w-1/2 self-center">
+        <div className="md:w-1/2 self-center md:self-start">
           <Gallery />
         </div>
       </div>
