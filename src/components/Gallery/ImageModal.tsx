@@ -1,4 +1,8 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 interface ImageModalProps {
   isOpen: boolean;
@@ -13,21 +17,34 @@ const ImageModal: React.FC<ImageModalProps> = ({
   altText,
   onClose,
 }) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="relative bg-white p-4 rounded-lg max-w-3xl mx-auto">
-        <img
-          src={imageSrc}
-          alt={altText}
-          className="w-full object-contain max-h-[80vh]"
-        />
-      </div>
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+      <img
+        src={imageSrc}
+        alt={altText}
+        className="w-full object-contain max-h-[80vh]"
+      />
+
       <button
-        className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 focus:outline-none"
+        className="absolute top-2 right-2 bg-muted w-12 h-12 text-white rounded-full p-2 focus:outline-none"
         onClick={onClose}
-      ></button>
+      >
+        <FontAwesomeIcon icon={faXmark} size="xl" />
+      </button>
     </div>
   );
 };
