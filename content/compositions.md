@@ -1,5 +1,5 @@
 ---
-header: Check out my work
+header: Compositions
 compositions:
   - title: CrUde prelUdes (10 minutes, piano)
   - title: Guitar Sonata (20 minutes, guitar)
