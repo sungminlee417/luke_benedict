@@ -7,6 +7,7 @@ const LINKS = [
   { name: "About", id: "biography" },
   { name: "Concerts", id: "concerts" },
   { name: "Discography", id: "discography" },
+  { name: "Compositions", id: "compositions" },
   { name: "Gallery", id: "gallery" },
   { name: "Contact", id: "contact" },
 ];
