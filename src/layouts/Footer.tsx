@@ -4,6 +4,7 @@ import album from "../../public/images/muse-duo-gray.png";
 import {
   faFacebook,
   faInstagram,
+  faSpotify,
   faTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
@@ -18,6 +19,10 @@ const LINKS = [
   {
     icon: faYoutube,
     link: "https://www.youtube.com/channel/UC6MX_fM6ewQSVmRc_Mmlr9g",
+  },
+  {
+    icon: faSpotify,
+    link: "https://open.spotify.com/artist/6qhfowukxKZo9DgAIOx4cT?si=TxR9SG7RRQ6FscbxLjLZtg",
   },
 ];
 
