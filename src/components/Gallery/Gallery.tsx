@@ -53,7 +53,7 @@ const Gallery = () => {
             {images.map((image, i) => (
               <div key={i} className="embla__slide">
                 <img
-                  className="w-full object-contain cursor-pointer" // Add cursor-pointer for the image
+                  className="h-96 object-contain mx-auto cursor-pointer" // Add cursor-pointer for the image
                   src={image.image}
                   alt={image.alt || "gallery image"}
                   onClick={() => handleImageClick(image)} // Handle image click
