@@ -103,13 +103,6 @@ collections:
               - label: "Title"
                 name: "title"
                 widget: "string"
-              - label: "Image"
-                name: "image"
-                widget: "image"
-                allow_multiple: false
-              - label: "Alt Text"
-                name: "alt"
-                widget: "string"
       - label: "Contact Form"
         name: "contact-form"
         file: "content/contact-form.md"
