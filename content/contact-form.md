@@ -1,4 +1,5 @@
 ---
-header: "Contact Me"
-description: "If you would like to get in touch, please fill out the following contact form."
+header: "Get in Touch "
+description: "If you would like to reach out about scores, performances, or
+  lessons, please fill out the following contact form. "
 ---
