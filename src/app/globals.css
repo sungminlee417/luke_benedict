@@ -9,22 +9,6 @@
   --detail-high-contrast: rgb(192, 192, 192);
 }
 
-/* Add this to your global CSS file (e.g., styles/globals.css) */
-.my-masonry-grid {
-  display: flex;
-  margin-left: -30px; /* Optional negative margin */
-  width: auto;
-}
-.my-masonry-grid_column {
-  padding-left: 30px; /* Optional spacing between columns */
-  background-clip: padding-box;
-}
-
-/* Ensure images take full width of their column */
-.my-masonry-grid_column > div {
-  margin-bottom: 30px;
-}
-
 .embla {
   margin: auto;
   --slide-height: 35rem;

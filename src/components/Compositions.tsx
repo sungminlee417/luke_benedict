@@ -13,10 +13,7 @@ interface CompositionsAttributes {
 const Compositions = () => {
   const { header, compositions } = attributes as CompositionsAttributes;
   return (
-    <section
-      id="compositions"
-      className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8"
-    >
+    <section id="compositions">
       <h2 className="font-bold text-2xl lg:text-4xl mb-10">{header}</h2>
       <ul className="flex flex-wrap">
         {compositions.map((composition, index) => (

@@ -1,6 +1,5 @@
 import Hero from "@/components/Hero";
 import Biography from "@/components/Biography";
-// import Album from "@/components/Album";
 import UpcomingConcerts from "@/components/UpcomingConcerts";
 import ContactForm from "@/components/ContactForm";
 import Gallery from "@/components/Gallery";
@@ -12,11 +11,16 @@ export default function Home() {
     <>
       <Hero />
       <Biography />
-      {/* <Album /> */}
       <UpcomingConcerts />
       <Discography />
-      <Compositions />
-      <Gallery />
+      <div className="flex flex-col gap-16 md:flex-row justify-between mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="w-1/2">
+          <Compositions />
+        </div>
+        <div className="w-1/2">
+          <Gallery />
+        </div>
+      </div>
       <ContactForm />
     </>
   );
