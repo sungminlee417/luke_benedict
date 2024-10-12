@@ -12,7 +12,8 @@ const inter = Oswald({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Luke Benedict",
-  description: "Personal Site",
+  description:
+    "Explore the music of Luke Benedict, composer-pianist whose innovative sound unites a forward thinking modernistic edge and accessible sound worlds.",
 };
 
 export default function RootLayout({
