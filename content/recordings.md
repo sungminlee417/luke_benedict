@@ -12,4 +12,8 @@ recordings:
     url: https://open.spotify.com/track/6nnlcvP2l9D7ifwy2Q1xB9?si=9kojYanAQAya5vpBSV7jSA
     image: img/extend_album.jpeg
     header: Extend
+  - type: Image Link
+    header: "The Muse Duo: Experiments "
+    image: img/955ec178-8c19-44d9-97b7-a27296663932.jpeg
+    url: https://open.spotify.com/album/06Q4h44XDIYrpE0EbGAFMy?si=5ToOgGroT6y0MwgIliEZFg
 ---
