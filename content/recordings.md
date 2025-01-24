@@ -1,6 +1,9 @@
 ---
 recordings:
   - type: Video URL
+    url: https://youtu.be/6sIosaXDptQ?si=HgKVjqHUD1I3aRsZ
+    header: "Grafico de la Petenera: Falseta"
+  - type: Video URL
     url: https://youtu.be/536i7ij_RS8?feature=shared
     header: Grafico de la Petenera
     image: ""
