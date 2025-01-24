@@ -14,5 +14,5 @@ compositions:
       bassoon, percussion, violin)
   - title: "from the floor - (8 minutes) "
   - title: The Traveler - (26 minutes, piano four hands)
-  - title: Whiskey in the Jar - (3 minutes, electric guitar, piano)
+  - title: Parting Glass and Whiskey in the Jar - (13 minutes, electric guitar, piano)
 ---
