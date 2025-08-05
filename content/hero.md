@@ -1,5 +1,5 @@
 ---
 header: Luke Benedict
 subHeader: Composer-Pianist
-backgroundImage: img/luke_053025_pieced-media_-109.jpg
+backgroundImage: img/luke_053025_pieced-media_-67.png
 ---
