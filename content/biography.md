@@ -39,6 +39,6 @@ paragraphs:
       All of these different artistic avenues express Luke’s compositional
       language in different ways, and work towards making him a multi-faceted
       musician built for the modern age of classical music. "
-image: img/luke_053025_pieced-media_-109.jpg
+image: img/luke_053025_pieced-media_-67.png
 alt: alt
 ---
