@@ -13,4 +13,6 @@ images:
     alt: Luke playing piano
   - image: img/img_1790.jpg
     alt: Luke Benedict
+  - image: img/luke_053025_pieced-media_-76.jpg
+    alt: Luke Benedict
 ---
