@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Oswald } from "next/font/google";
 import "./globals.css";
-import MainNav from "@/layouts/MainNav";
+import SlideOutNav from "@/components/SlideOutNav";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Footer from "@/layouts/Footer";
@@ -57,7 +57,7 @@ export default function RootLayout({
         ></script>
         <DarkModeProvider>
           <div className="flex flex-col h-screen">
-            <MainNav />
+            <SlideOutNav />
             <main className="flex-grow">{children}</main>
             <Footer />
           </div>

@@ -157,7 +157,8 @@ const ImageModal: React.FC<ImageModalProps> = ({
 
       {/* Instructions */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 bg-black/50 text-white px-4 py-2 rounded-full text-xs opacity-75">
-        Use arrow keys to navigate • ESC to close
+        <span className="hidden sm:inline">Use arrow keys to navigate • ESC to close</span>
+        <span className="sm:hidden">Tap arrows to navigate • Tap X to close</span>
       </div>
     </div>
   );
