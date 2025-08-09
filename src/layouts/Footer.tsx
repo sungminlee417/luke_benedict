@@ -28,18 +28,31 @@ const LINKS = [
 
 const Footer = () => {
   return (
-    <footer className="footer bg-neutral text-neutral-content items-center p-4">
-      <aside className="grid-flow-col items-center">
-        <Image src={album} alt="Album" width="40" />
-        <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
-      </aside>
-      <nav className="grid-flow-col gap-5 md:place-self-center md:justify-self-end">
-        {LINKS.map((linkData, i) => (
-          <a key={i} href={linkData.link} target="_blank">
-            <FontAwesomeIcon icon={linkData.icon} size="2x" />
-          </a>
-        ))}
-      </nav>
+    <footer className="bg-neutral text-white border-t border-gray-800">
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex items-center gap-3">
+            <Image src={album} alt="Album" width="40" className="opacity-80" />
+            <p className="text-sm text-gray-300">
+              © {new Date().getFullYear()} Luke Benedict. All rights reserved.
+            </p>
+          </div>
+          <nav className="flex gap-4">
+            {LINKS.map((linkData, i) => (
+              <a 
+                key={i} 
+                href={linkData.link} 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-accent transition-colors duration-300 transform hover:scale-110"
+                aria-label={`Visit Luke Benedict on ${linkData.icon.iconName}`}
+              >
+                <FontAwesomeIcon icon={linkData.icon} size="lg" />
+              </a>
+            ))}
+          </nav>
+        </div>
+      </div>
     </footer>
   );
 };

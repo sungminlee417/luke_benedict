@@ -8,7 +8,11 @@ import Footer from "@/layouts/Footer";
 
 config.autoAddCss = false;
 
-const inter = Oswald({ subsets: ["latin"] });
+const inter = Oswald({ 
+  subsets: ["latin"],
+  display: 'swap',
+  variable: '--font-oswald',
+});
 
 export const metadata: Metadata = {
   title: "Luke Benedict",

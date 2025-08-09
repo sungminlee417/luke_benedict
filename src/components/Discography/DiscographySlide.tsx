@@ -44,8 +44,8 @@ const DiscographySlide = ({ slide }: DiscographySlideProps) => {
           <Image
             src={slide.image}
             alt={slide.header}
-            layout="fill"
-            objectFit="contain"
+            fill
+            style={{ objectFit: 'contain' }}
           />
         </div>
       )}

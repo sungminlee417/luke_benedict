@@ -13,19 +13,36 @@ interface CompositionsAttributes {
 const Compositions = () => {
   const { header, compositions } = attributes as CompositionsAttributes;
   return (
-    <section id="compositions">
-      <h2 className="font-bold text-2xl lg:text-4xl mb-10">{header}</h2>
-      <ul className="list-disc">
-        {compositions.map((composition, index) => (
-          <li key={index}>
-            <div>
-              <h3 className="text-xl font-semibold mb-2">
-                {composition.title}
-              </h3>
-            </div>
-          </li>
-        ))}
-      </ul>
+    <section id="compositions" className="section-padding bg-white">
+      <div className="container mx-auto max-w-4xl">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-4">
+            {header}
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+        </div>
+        
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+          <div className="divide-y divide-gray-100">
+            {compositions.map((composition, index) => (
+              <div 
+                key={index} 
+                className="group px-8 py-6 hover:bg-gray-50 transition-all duration-200 animate-fade-in"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <div className="flex items-center gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-primary to-secondary"></div>
+                  </div>
+                  <h3 className="text-xl font-medium text-neutral group-hover:text-primary transition-colors duration-200 flex-1">
+                    {composition.title}
+                  </h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

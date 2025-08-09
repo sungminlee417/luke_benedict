@@ -66,15 +66,18 @@ const ContactForm = () => {
       >
         <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <h2 className="text-center lg:text-left text-2xl font-bold sm:text-3xl mb-2">
-              {header}
-            </h2>
-            <p className="w-full text-center lg:text-left text-lg">
-              {description}
-            </p>
+            <div className="text-center lg:text-left mb-8">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-4">
+                {header}
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto lg:mx-0 rounded-full mb-4"></div>
+              <p className="text-lg text-gray-700">
+                {description}
+              </p>
+            </div>
           </div>
 
-          <div className="card lg:col-span-3">
+          <div className="lg:col-span-3">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div>
                 <label className="sr-only" htmlFor="name">

@@ -1,18 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { attributes } from "../../../content/gallery.md";
 import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import Fade from "embla-carousel-fade";
 import {
-  NextButton,
-  PrevButton,
   usePrevNextButtons,
 } from "../EmblaCarousel/EmblaCarouselArrowButtons";
-import ImageModal from "./ImageModal"; // Import the modal component
+import ImageModal from "./ImageModal";
 
-interface Image {
+interface GalleryImage {
   image: string;
   alt: string;
 }
@@ -20,7 +19,7 @@ interface Image {
 const OPTIONS: EmblaOptionsType = { loop: true, duration: 30 };
 
 const Gallery = () => {
-  const { header, images } = attributes as { header: string; images: Image[] };
+  const { header, images } = attributes as { header: string; images: GalleryImage[] };
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS, [Fade()]);
   const {
     prevBtnDisabled,
@@ -30,9 +29,9 @@ const Gallery = () => {
   } = usePrevNextButtons(emblaApi);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
-  const handleImageClick = (image: Image) => {
+  const handleImageClick = (image: GalleryImage) => {
     setSelectedImage(image);
     setIsModalOpen(true);
   };
@@ -43,34 +42,81 @@ const Gallery = () => {
   };
 
   return (
-    <section id="gallery">
-      <h2 className="font-bold text-2xl lg:text-4xl mb-10 text-center md:text-start">
-        {header}
-      </h2>
-      <div className="embla">
-        <div className="embla__viewport" ref={emblaRef}>
-          <div className="embla__container">
-            {images.map((image, i) => (
-              <div key={i} className="embla__slide">
-                <img
-                  className="h-96 object-contain mx-auto cursor-pointer" // Add cursor-pointer for the image
-                  src={image.image}
-                  alt={image.alt || "gallery image"}
-                  onClick={() => handleImageClick(image)} // Handle image click
-                />
+    <section id="gallery" className="section-padding bg-white">
+      <div className="container mx-auto max-w-4xl">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-4">
+            {header}
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+        </div>
+        
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+          <div className="relative">
+            <div className="embla overflow-hidden">
+              <div className="embla__viewport" ref={emblaRef}>
+                <div className="embla__container flex">
+                  {images.map((image, i) => (
+                    <div key={i} className="embla__slide flex-none w-full relative">
+                      <div className="relative aspect-video w-full bg-gray-50 rounded-lg overflow-hidden group cursor-pointer" 
+                           onClick={() => handleImageClick(image)}>
+                        <Image
+                          src={`/${image.image}`}
+                          alt={image.alt || "gallery image"}
+                          fill
+                          style={{ objectFit: 'contain' }}
+                          className="transition-transform duration-500 group-hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                          priority={i === 0}
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 backdrop-blur-sm rounded-full p-3">
+                            <svg className="w-6 h-6 text-neutral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      {image.alt && (
+                        <div className="mt-4 text-center">
+                          <p className="text-sm text-gray-600 italic">{image.alt}</p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
-          <div className="embla__controls !flex !justify-center">
-            <div className="embla__buttons">
-              <PrevButton
+            </div>
+            
+            {/* Modern Navigation Controls */}
+            <div className="flex items-center justify-center gap-4 mt-8 px-6 pb-6">
+              <button
                 onClick={onPrevButtonClick}
                 disabled={prevBtnDisabled}
-              />
-              <NextButton
+                className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-primary disabled:opacity-30 disabled:hover:bg-gray-100 transition-all duration-200"
+              >
+                <svg className="w-5 h-5 text-gray-600 group-hover:text-white group-disabled:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium text-gray-600">
+                  {images.findIndex((_, i) => i === (emblaApi?.selectedScrollSnap() || 0)) + 1}
+                </span>
+                <span className="text-sm text-gray-400">of</span>
+                <span className="text-sm font-medium text-gray-600">{images.length}</span>
+              </div>
+              
+              <button
                 onClick={onNextButtonClick}
                 disabled={nextBtnDisabled}
-              />
+                className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-primary disabled:opacity-30 disabled:hover:bg-gray-100 transition-all duration-200"
+              >
+                <svg className="w-5 h-5 text-gray-600 group-hover:text-white group-disabled:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
