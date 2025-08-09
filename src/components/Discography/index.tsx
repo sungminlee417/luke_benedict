@@ -41,7 +41,7 @@ const Discography = () => {
 
   return (
     <div id="discography" className="bg-primary dark:bg-gray-800 transition-colors">
-      <section className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 overflow-hidden">
         <div className="embla">
           <div className="embla__viewport" ref={emblaRef}>
             <div className="embla__container">

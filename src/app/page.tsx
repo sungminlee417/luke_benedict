@@ -13,11 +13,11 @@ export default function Home() {
       <Biography />
       <UpcomingConcerts />
       <Discography />
-      <div className="flex flex-col gap-16 md:flex-row justify-between mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 transition-colors">
-        <div className="md:w-1/2">
+      <div className="flex flex-col gap-16 md:flex-row justify-between mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 transition-colors overflow-hidden">
+        <div className="md:w-1/2 min-w-0 overflow-hidden">
           <Compositions />
         </div>
-        <div className="md:w-1/2 self-center md:self-start">
+        <div className="md:w-1/2 min-w-0 overflow-hidden self-center md:self-start">
           <Gallery />
         </div>
       </div>

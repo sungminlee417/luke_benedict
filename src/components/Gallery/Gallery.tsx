@@ -51,7 +51,7 @@ const Gallery = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
         </div>
         
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden transition-colors">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden transition-colors max-w-full">
           <div className="relative">
             <div className="embla overflow-hidden">
               <div className="embla__viewport" ref={emblaRef}>
