@@ -28,6 +28,7 @@ interface ContactFormAttributes {
 const ContactForm = () => {
   const { header, description } = attributes as ContactFormAttributes;
   const [loading, setLoading] = useState<boolean>(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const {
     register,
@@ -40,6 +41,7 @@ const ContactForm = () => {
 
   const onSubmit = (formData: any) => {
     setLoading(true);
+    setSubmitStatus('idle');
 
     emailjs
       .send(
@@ -50,11 +52,17 @@ const ContactForm = () => {
       )
       .then(() => {
         setLoading(false);
+        setSubmitStatus('success');
         reset();
+        // Auto-hide success message after 5 seconds
+        setTimeout(() => setSubmitStatus('idle'), 5000);
       })
       .catch((err) => {
-        console.log(err);
+        console.error('Email submission failed:', err);
         setLoading(false);
+        setSubmitStatus('error');
+        // Auto-hide error message after 5 seconds
+        setTimeout(() => setSubmitStatus('idle'), 5000);
       });
   };
 
@@ -151,13 +159,44 @@ const ContactForm = () => {
                 )}
               </div>
 
-              <div className="mt-4">
+              <div className="mt-4 space-y-4">
                 <button
                   type="submit"
-                  className={`btn btn-primary ${loading ? "loading" : ""}`}
+                  disabled={loading}
+                  className={`btn btn-primary w-full ${loading ? "opacity-75 cursor-not-allowed" : ""}`}
                 >
-                  {loading ? "Sending..." : "Send Enquiry"}
+                  {loading ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    "Send Enquiry"
+                  )}
                 </button>
+                
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <div className="bg-green-50 dark:bg-green-900/50 border border-green-200 dark:border-green-800 text-green-800 dark:text-green-200 px-4 py-3 rounded-lg">
+                    <p className="flex items-center gap-2">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      Thank you! Your message has been sent successfully.
+                    </p>
+                  </div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <div className="bg-red-50 dark:bg-red-900/50 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-200 px-4 py-3 rounded-lg">
+                    <p className="flex items-center gap-2">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                      </svg>
+                      Sorry, there was an error sending your message. Please try again.
+                    </p>
+                  </div>
+                )}
               </div>
             </form>
           </div>

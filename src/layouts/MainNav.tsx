@@ -23,8 +23,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm fixed z-20 w-full shadow-md border-b border-gray-100 dark:border-gray-800 transition-colors">
-        <div className="navbar-start">
+    <nav className="navbar bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm fixed z-20 w-full shadow-md border-b border-gray-100 dark:border-gray-800 transition-colors px-4">
+        <div className="navbar-start flex-1">
           <div className="dropdown">
             <div
               tabIndex={0}
@@ -70,13 +70,13 @@ const Navbar = () => {
             Luke Benedict
           </button>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-2">
+        <div className="navbar-center hidden lg:flex flex-1 justify-center">
+          <ul className="menu menu-horizontal px-1 gap-1">
             {LINKS.map((link, i) => (
               <li key={i}>
                 <button
                   onClick={() => scrollToSection(link.id)}
-                  className="text-neutral hover:text-primary font-medium px-4 py-2 rounded-lg hover:bg-primary/10 transition-all dark:text-gray-200 dark:hover:text-primary"
+                  className="text-neutral hover:text-primary font-medium px-2 py-2 rounded-lg hover:bg-primary/10 transition-all dark:text-gray-200 dark:hover:text-primary whitespace-nowrap"
                 >
                   {link.name}
                 </button>
@@ -84,7 +84,7 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end flex-1 justify-end">
           <button
             onClick={toggleDarkMode}
             className="btn btn-ghost p-2 rounded-lg hover:bg-primary/10 transition-all"

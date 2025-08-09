@@ -16,9 +16,26 @@ const inter = Oswald({
 });
 
 export const metadata: Metadata = {
-  title: "Luke Benedict",
+  title: "Luke Benedict - Composer & Pianist",
   description:
     "Explore the music of Luke Benedict, composer-pianist whose innovative sound unites a forward thinking modernistic edge and accessible sound worlds.",
+  keywords: "Luke Benedict, composer, pianist, music, classical, contemporary, concerts",
+  authors: [{ name: "Luke Benedict" }],
+  openGraph: {
+    title: "Luke Benedict - Composer & Pianist",
+    description: "Innovative composer-pianist uniting modernistic edge with accessible sound worlds.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Luke Benedict - Composer & Pianist",
+    description: "Innovative composer-pianist uniting modernistic edge with accessible sound worlds.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
