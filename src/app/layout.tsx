@@ -5,6 +5,7 @@ import MainNav from "@/layouts/MainNav";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Footer from "@/layouts/Footer";
+import { DarkModeProvider } from "@/contexts/DarkModeContext";
 
 config.autoAddCss = false;
 
@@ -37,11 +38,13 @@ export default function RootLayout({
           crossOrigin="anonymous"
           async
         ></script>
-        <div className="flex flex-col h-screen">
-          <MainNav />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </div>
+        <DarkModeProvider>
+          <div className="flex flex-col h-screen">
+            <MainNav />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </div>
+        </DarkModeProvider>
         <script
           dangerouslySetInnerHTML={{
             __html: `

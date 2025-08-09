@@ -28,12 +28,12 @@ const LINKS = [
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral text-white border-t border-gray-800">
+    <footer className="bg-neutral dark:bg-gray-900 text-white border-t border-gray-800 dark:border-gray-700 transition-colors">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-3">
             <Image src={album} alt="Album" width="40" className="opacity-80" />
-            <p className="text-sm text-gray-300">
+            <p className="text-sm text-gray-300 dark:text-gray-400">
               © {new Date().getFullYear()} Luke Benedict. All rights reserved.
             </p>
           </div>
@@ -44,7 +44,7 @@ const Footer = () => {
                 href={linkData.link} 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-accent transition-colors duration-300 transform hover:scale-110"
+                className="text-gray-400 dark:text-gray-500 hover:text-accent dark:hover:text-accent transition-colors duration-300 transform hover:scale-110"
                 aria-label={`Visit Luke Benedict on ${linkData.icon.iconName}`}
               >
                 <FontAwesomeIcon icon={linkData.icon} size="lg" />

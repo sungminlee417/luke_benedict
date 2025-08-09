@@ -14,7 +14,7 @@ const UpcomingConcerts = () => {
   return (
     <section
       id="concerts"
-      className="section-padding bg-white"
+      className="section-padding bg-white dark:bg-gray-900 transition-colors"
     >
       <div className="container mx-auto">
         <div className="text-center mb-16">

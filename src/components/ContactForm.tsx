@@ -59,7 +59,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section>
+    <section className="bg-white dark:bg-gray-900 transition-colors">
       <div
         id="contact"
         className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8"
@@ -71,7 +71,7 @@ const ContactForm = () => {
                 {header}
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto lg:mx-0 rounded-full mb-4"></div>
-              <p className="text-lg text-gray-700">
+              <p className="text-lg text-gray-700 dark:text-gray-300">
                 {description}
               </p>
             </div>
@@ -85,13 +85,13 @@ const ContactForm = () => {
                 </label>
                 <input
                   {...register("name")}
-                  className="w-full input input-bordered p-3 text-sm"
+                  className="w-full input input-bordered p-3 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 focus:border-primary dark:focus:border-primary"
                   placeholder="Name"
                   type="text"
                   id="name"
                 />
                 {errors.name && (
-                  <small className="text-red-600">{errors.name.message}</small>
+                  <small className="text-red-600 dark:text-red-400">{errors.name.message}</small>
                 )}
               </div>
 
@@ -102,13 +102,13 @@ const ContactForm = () => {
                   </label>
                   <input
                     {...register("email")}
-                    className="w-full input input-bordered p-3 text-sm"
+                    className="w-full input input-bordered p-3 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 focus:border-primary dark:focus:border-primary"
                     placeholder="Email address"
                     type="email"
                     id="email"
                   />
                   {errors.email && (
-                    <small className="text-red-600">
+                    <small className="text-red-600 dark:text-red-400">
                       {errors.email.message}
                     </small>
                   )}
@@ -120,13 +120,13 @@ const ContactForm = () => {
                   </label>
                   <input
                     {...register("phone")}
-                    className="w-full input input-bordered p-3 text-sm"
+                    className="w-full input input-bordered p-3 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 focus:border-primary dark:focus:border-primary"
                     placeholder="Phone Number"
                     type="tel"
                     id="phone"
                   />
                   {errors.phone && (
-                    <small className="text-red-600">
+                    <small className="text-red-600 dark:text-red-400">
                       {errors.phone.message}
                     </small>
                   )}
@@ -139,13 +139,13 @@ const ContactForm = () => {
                 </label>
                 <textarea
                   {...register("message")}
-                  className="w-full textarea textarea-bordered p-3 text-sm"
+                  className="w-full textarea textarea-bordered p-3 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 focus:border-primary dark:focus:border-primary"
                   placeholder="Message"
                   rows={8}
                   id="message"
                 ></textarea>
                 {errors.message && (
-                  <small className="text-red-600">
+                  <small className="text-red-600 dark:text-red-400">
                     {errors.message.message}
                   </small>
                 )}

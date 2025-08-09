@@ -42,7 +42,7 @@ const Gallery = () => {
   };
 
   return (
-    <section id="gallery" className="section-padding bg-white">
+    <section id="gallery" className="section-padding">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-4">
@@ -51,14 +51,14 @@ const Gallery = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
         </div>
         
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden transition-colors">
           <div className="relative">
             <div className="embla overflow-hidden">
               <div className="embla__viewport" ref={emblaRef}>
                 <div className="embla__container flex">
                   {images.map((image, i) => (
                     <div key={i} className="embla__slide flex-none w-full relative">
-                      <div className="relative aspect-video w-full bg-gray-50 rounded-lg overflow-hidden group cursor-pointer" 
+                      <div className="relative aspect-video w-full bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden group cursor-pointer" 
                            onClick={() => handleImageClick(image)}>
                         <Image
                           src={`/${image.image}`}
@@ -79,7 +79,7 @@ const Gallery = () => {
                       </div>
                       {image.alt && (
                         <div className="mt-4 text-center">
-                          <p className="text-sm text-gray-600 italic">{image.alt}</p>
+                          <p className="text-sm text-gray-600 dark:text-gray-400 italic">{image.alt}</p>
                         </div>
                       )}
                     </div>
@@ -93,7 +93,7 @@ const Gallery = () => {
               <button
                 onClick={onPrevButtonClick}
                 disabled={prevBtnDisabled}
-                className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-primary disabled:opacity-30 disabled:hover:bg-gray-100 transition-all duration-200"
+                className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-primary disabled:opacity-30 disabled:hover:bg-gray-100 dark:disabled:hover:bg-gray-700 transition-all duration-200"
               >
                 <svg className="w-5 h-5 text-gray-600 group-hover:text-white group-disabled:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
@@ -101,17 +101,17 @@ const Gallery = () => {
               </button>
               
               <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-gray-600">
+                <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
                   {images.findIndex((_, i) => i === (emblaApi?.selectedScrollSnap() || 0)) + 1}
                 </span>
-                <span className="text-sm text-gray-400">of</span>
-                <span className="text-sm font-medium text-gray-600">{images.length}</span>
+                <span className="text-sm text-gray-400 dark:text-gray-500">of</span>
+                <span className="text-sm font-medium text-gray-600 dark:text-gray-300">{images.length}</span>
               </div>
               
               <button
                 onClick={onNextButtonClick}
                 disabled={nextBtnDisabled}
-                className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-primary disabled:opacity-30 disabled:hover:bg-gray-100 transition-all duration-200"
+                className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-primary disabled:opacity-30 disabled:hover:bg-gray-100 dark:disabled:hover:bg-gray-700 transition-all duration-200"
               >
                 <svg className="w-5 h-5 text-gray-600 group-hover:text-white group-disabled:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />

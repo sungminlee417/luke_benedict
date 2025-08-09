@@ -18,7 +18,7 @@ const Biography = () => {
   return (
     <section
       id="biography"
-      className="section-padding bg-gradient-to-b from-white to-gray-50"
+      className="section-padding bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 transition-colors"
     >
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
@@ -43,7 +43,7 @@ const Biography = () => {
             </div>
             <article className="space-y-4">
               {paragraphs.map((paragraph, i) => (
-                <p key={i} className="text-lg text-gray-700 leading-relaxed">
+                <p key={i} className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                   {paragraph.text}
                 </p>
               ))}

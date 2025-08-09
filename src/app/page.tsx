@@ -8,12 +8,12 @@ import Compositions from "@/components/Compositions";
 
 export default function Home() {
   return (
-    <>
+    <div className="bg-white dark:bg-gray-900 transition-colors">
       <Hero />
       <Biography />
       <UpcomingConcerts />
       <Discography />
-      <div className="flex flex-col gap-16 md:flex-row justify-between mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+      <div className="flex flex-col gap-16 md:flex-row justify-between mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 transition-colors">
         <div className="md:w-1/2">
           <Compositions />
         </div>
@@ -22,6 +22,6 @@ export default function Home() {
         </div>
       </div>
       <ContactForm />
-    </>
+    </div>
   );
 }

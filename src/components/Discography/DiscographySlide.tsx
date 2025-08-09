@@ -24,7 +24,7 @@ const DiscographySlide = ({ slide }: DiscographySlideProps) => {
   return (
     <div className="flex flex-col gap-3 h-full">
       <div>
-        <h3 className="text-2xl text-base-100">
+        <h3 className="text-2xl text-white dark:text-gray-100">
           <Link href={slide.url} target="_blank" className="hover:underline">
             {slide.header}
           </Link>
