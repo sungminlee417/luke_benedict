@@ -1,5 +1,26 @@
 ---
-youtubeChannel: "https://www.youtube.com/channel/UC6MX_fM6ewQSVmRc_Mmlr9g"
+# Discography & Videos Configuration
+discography:
+  enabled: true
+  header: "Discography"
+  subHeader: "Music Releases"
+  description: "Explore Luke's music releases and recorded albums"
+  layout: "grid" # grid, carousel, list
+  itemsPerRow: 3
+  showDescription: true
+  
+videos:
+  enabled: true  
+  header: "Videos"
+  subHeader: "Performances & Compositions"
+  description: "Watch Luke's performances and musical compositions"
+  layout: "grid" # grid, carousel, list
+  maxItems: 4
+  showYouTubeChannel: true
+  youtubeChannel: "https://www.youtube.com/channel/UC6MX_fM6ewQSVmRc_Mmlr9g"
+  youtubeChannelText: "View More Videos"
+  youtubeChannelSubtext: "Subscribe to Luke's Channel"
+
 recordings:
   - type: Video URL
     url: https://youtu.be/6sIosaXDptQ?si=HgKVjqHUD1I3aRsZ

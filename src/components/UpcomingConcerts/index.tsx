@@ -10,7 +10,19 @@ interface Concert {
 }
 
 const UpcomingConcerts = () => {
-  const { concerts } = attributes as { concerts: Concert[] };
+  const { 
+    concerts, 
+    header = "Upcoming Concerts",
+    description = "Join Luke Benedict for his upcoming performances and musical events",
+    layout = "grid",
+    concertsPerRow = 3
+  } = attributes as { 
+    concerts: Concert[], 
+    header?: string,
+    description?: string,
+    layout?: string,
+    concertsPerRow?: number
+  };
   return (
     <section
       id="concerts"
@@ -21,14 +33,19 @@ const UpcomingConcerts = () => {
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-20 animate-slide-up">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight">
-            Upcoming Concerts
+            {header}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto animate-scale-in"></div>
           <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mt-8 max-w-2xl mx-auto font-light leading-relaxed">
-            Join Luke Benedict for his upcoming performances and musical events
+            {description}
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className={`grid grid-cols-1 ${
+          concertsPerRow === 1 ? '' : 
+          concertsPerRow === 2 ? 'md:grid-cols-2' : 
+          concertsPerRow === 4 ? 'md:grid-cols-2 lg:grid-cols-4' : 
+          'md:grid-cols-2 lg:grid-cols-3'
+        } gap-8`}>
           {concerts.map((concert: Concert, i: React.Key | null | undefined) => (
             <div
               key={i}

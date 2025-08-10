@@ -3,24 +3,42 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { attributes } from "../../content/biography.md";
-
-interface Paragraph {
-  text: string;
-}
+import { truncateContent } from "../utils/textUtils";
 
 interface AboutPageAttributes {
   image: string;
+  imageDescription?: string;
   header: string;
-  paragraphs: Paragraph[];
+  content: string;
+  imagePosition?: string;
+  imageSize?: string;
+  stickyImage?: boolean;
+  showReadMore?: boolean;
+  readMoreLimit?: number;
+  backgroundColor?: string;
 }
 
 const Biography = () => {
-  const { image, header, paragraphs } = attributes as AboutPageAttributes;
+  const { 
+    image, 
+    imageDescription,
+    header, 
+    content, 
+    imagePosition = "left",
+    imageSize = "large",
+    stickyImage = true,
+    showReadMore = true,
+    readMoreLimit = 2,
+    backgroundColor = "gradient"
+  } = attributes as AboutPageAttributes;
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Show only first 2 paragraphs initially
-  const shouldTruncate = paragraphs.length > 2;
-  const displayedParagraphs = isExpanded ? paragraphs : paragraphs.slice(0, 2);
+  // Use utility function to handle text processing
+  const { truncated, shouldTruncate, full } = truncateContent(content, readMoreLimit);
+  const displayedParagraphs = isExpanded ? full : truncated;
+  
+  // Only show read more if enabled and should truncate
+  const showReadMoreButton = showReadMore && shouldTruncate;
 
   return (
     <section
@@ -28,17 +46,21 @@ const Biography = () => {
       className="section-padding bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 transition-colors"
     >
       <div className="container mx-auto">
-        <div className="flex flex-col lg:flex-row gap-16 lg:items-start">
-          <div className="lg:w-1/2 lg:sticky lg:top-20 animate-slide-in-left">
+        <div className={`flex flex-col ${imagePosition === 'right' ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-16 lg:items-start`}>
+          <div className={`lg:w-1/2 ${stickyImage ? 'lg:sticky lg:top-20' : ''} animate-slide-in-left`}>
             <div className="relative group lg:max-w-md lg:mx-auto">
               <div className="absolute -inset-2 bg-gradient-to-r from-primary via-secondary to-accent rounded-3xl blur-lg opacity-20 group-hover:opacity-40 transition-all duration-1000 animate-float"></div>
               <div className="relative">
                 <Image
                   src={image}
-                  alt="Picture of Luke Benedict"
+                  alt={imageDescription || "Picture of Luke Benedict"}
                   width={800}
                   height={800}
-                  className="relative rounded-3xl shadow-2xl w-full h-auto max-h-[75vh] lg:max-h-[80vh] object-cover transform transition-all duration-700 group-hover:scale-[1.03] group-hover:shadow-3xl"
+                  className={`relative rounded-3xl shadow-2xl w-full h-auto ${
+                    imageSize === 'small' ? 'max-h-[50vh] lg:max-h-[60vh]' : 
+                    imageSize === 'medium' ? 'max-h-[60vh] lg:max-h-[70vh]' : 
+                    'max-h-[75vh] lg:max-h-[80vh]'
+                  } object-cover transform transition-all duration-700 group-hover:scale-[1.03] group-hover:shadow-3xl`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
@@ -63,12 +85,12 @@ const Biography = () => {
                     className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-light tracking-wide animate-slide-up mb-6"
                     style={{ animationDelay: `${0.1 * (i + 1)}s` }}
                   >
-                    {paragraph.text}
+                    {paragraph}
                   </p>
                 ))}
               </div>
 
-              {shouldTruncate && (
+              {showReadMoreButton && (
                 <div className="pt-4">
                   <button
                     onClick={() => setIsExpanded(!isExpanded)}
@@ -96,7 +118,7 @@ const Biography = () => {
             </article>
             <div
               className="pt-6 animate-slide-up"
-              style={{ animationDelay: `${0.1 * (paragraphs.length + 2)}s` }}
+              style={{ animationDelay: `${0.1 * (full.length + 2)}s` }}
             >
               <div className="flex items-center gap-4 text-gray-600 dark:text-gray-400">
                 <div className="w-12 h-px bg-gradient-to-r from-primary to-transparent"></div>

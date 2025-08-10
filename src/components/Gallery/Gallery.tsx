@@ -19,9 +19,24 @@ interface GalleryImage {
 const OPTIONS: EmblaOptionsType = { loop: true, duration: 30 };
 
 const Gallery = () => {
-  const { header, images } = attributes as {
+  const { 
+    header, 
+    description,
+    images,
+    layout = "carousel",
+    showArrows = true,
+    showDots = true,
+    showCounter = true,
+    enableModal = true
+  } = attributes as {
     header: string;
+    description?: string;
     images: GalleryImage[];
+    layout?: string;
+    showArrows?: boolean;
+    showDots?: boolean;
+    showCounter?: boolean;
+    enableModal?: boolean;
   };
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS, [Fade()]);
   const {
@@ -96,6 +111,11 @@ const Gallery = () => {
             {header}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full animate-scale-in"></div>
+          {description && (
+            <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mt-8 max-w-2xl mx-auto font-light leading-relaxed">
+              {description}
+            </p>
+          )}
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden transition-colors h-96">
@@ -116,7 +136,7 @@ const Gallery = () => {
                   >
                     <div
                       className="relative w-full h-full bg-white dark:bg-gray-800 overflow-hidden group cursor-pointer p-4"
-                      onClick={() => handleImageClick(image, i)}
+                      onClick={() => enableModal && handleImageClick(image, i)}
                     >
                         <Image
                           src={`/${image.image}`}
@@ -160,6 +180,7 @@ const Gallery = () => {
             </div>
 
             {/* Navigation Controls */}
+            {(showArrows || showCounter) && (
             <div 
               className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center gap-4 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-gray-200 dark:border-gray-600 z-20"
               onMouseEnter={(e) => {
@@ -171,38 +192,45 @@ const Gallery = () => {
                 setControlsHovered(false);
               }}
             >
-              <button
-                onClick={onPrevButtonClick}
-                disabled={prevBtnDisabled}
-                className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-primary hover:scale-110 disabled:opacity-30 disabled:hover:bg-gray-100 dark:disabled:hover:bg-gray-700 disabled:hover:scale-100 transition-all duration-200"
-                aria-label="Previous image"
-              >
-                <FontAwesomeIcon 
-                  icon={faChevronLeft} 
-                  className="text-gray-800 dark:text-gray-200" 
-                  size="sm" 
-                />
-              </button>
+              {showArrows && (
+                <button
+                  onClick={onPrevButtonClick}
+                  disabled={prevBtnDisabled}
+                  className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-primary hover:scale-110 disabled:opacity-30 disabled:hover:bg-gray-100 dark:disabled:hover:bg-gray-700 disabled:hover:scale-100 transition-all duration-200"
+                  aria-label="Previous image"
+                >
+                  <FontAwesomeIcon 
+                    icon={faChevronLeft} 
+                    className="text-gray-800 dark:text-gray-200" 
+                    size="sm" 
+                  />
+                </button>
+              )}
 
-              <div className="flex items-center gap-1 text-xs font-medium text-gray-800 dark:text-gray-200">
-                <span>{(emblaApi?.selectedScrollSnap() || 0) + 1}</span>
-                <span className="text-gray-500">/</span>
-                <span>{images.length}</span>
-              </div>
+              {showCounter && (
+                <div className="flex items-center gap-1 text-xs font-medium text-gray-800 dark:text-gray-200">
+                  <span>{(emblaApi?.selectedScrollSnap() || 0) + 1}</span>
+                  <span className="text-gray-500">/</span>
+                  <span>{images.length}</span>
+                </div>
+              )}
 
-              <button
-                onClick={onNextButtonClick}
-                disabled={nextBtnDisabled}
-                className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-primary hover:scale-110 disabled:opacity-30 disabled:hover:bg-gray-100 dark:disabled:hover:bg-gray-700 disabled:hover:scale-100 transition-all duration-200"
-                aria-label="Next image"
-              >
-                <FontAwesomeIcon 
-                  icon={faChevronRight} 
-                  className="text-gray-800 dark:text-gray-200" 
-                  size="sm" 
-                />
-              </button>
+              {showArrows && (
+                <button
+                  onClick={onNextButtonClick}
+                  disabled={nextBtnDisabled}
+                  className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-primary hover:scale-110 disabled:opacity-30 disabled:hover:bg-gray-100 dark:disabled:hover:bg-gray-700 disabled:hover:scale-100 transition-all duration-200"
+                  aria-label="Next image"
+                >
+                  <FontAwesomeIcon 
+                    icon={faChevronRight} 
+                    className="text-gray-800 dark:text-gray-200" 
+                    size="sm" 
+                  />
+                </button>
+              )}
             </div>
+            )}
           </div>
         </div>
       </div>

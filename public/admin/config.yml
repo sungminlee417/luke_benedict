@@ -19,9 +19,47 @@ collections:
           - label: "Sub-Header"
             name: "subHeader"
             widget: "string"
+          - label: "Description"
+            name: "description"
+            widget: "text"
+            required: false
           - label: "Background Image"
             name: "backgroundImage"
             widget: "image"
+          - label: "Button Text"
+            name: "buttonText"
+            widget: "string"
+            default: "Discover His Music"
+          - label: "Button Destination"
+            name: "buttonDestination"
+            widget: "select"
+            options: ["biography", "concerts", "discography", "videos", "compositions", "gallery", "contact"]
+            default: "discography"
+          - label: "Text Alignment"
+            name: "textAlignment"
+            widget: "select"
+            options: ["center", "left", "right"]
+            default: "center"
+          - label: "Content Position"
+            name: "contentPosition"
+            widget: "select"
+            options: ["top", "center", "bottom"]
+            default: "center"
+          - label: "Background Position"
+            name: "backgroundPosition"
+            widget: "select"
+            options: ["center", "top", "bottom", "left", "right"]
+            default: "center"
+          - label: "Background Overlay"
+            name: "backgroundOverlay"
+            widget: "select"
+            options: ["light", "medium", "dark", "none"]
+            default: "medium"
+          - label: "Button Style"
+            name: "buttonStyle"
+            widget: "select"
+            options: ["primary", "secondary", "outline"]
+            default: "primary"
       - label: "Biography"
         name: "biography"
         file: "content/biography.md"
@@ -29,21 +67,67 @@ collections:
           - label: "Header"
             name: "header"
             widget: "string"
-          - label: "Paragraphs"
-            name: "paragraphs"
-            widget: "list"
-            fields:
-              - { label: "Text", name: "text", widget: "string" }
+          - label: "Content"
+            name: "content"
+            widget: "text"
+            hint: "Write your biography here. Separate paragraphs with double line breaks."
           - label: "Image"
             name: "image"
             widget: "image"
-          - label: "Alt Text"
-            name: "alt"
+          - label: "Image Description"
+            name: "imageDescription"
             widget: "string"
+            required: false
+          - label: "Image Position"
+            name: "imagePosition"
+            widget: "select"
+            options: ["left", "right", "top"]
+            default: "left"
+          - label: "Image Size"
+            name: "imageSize"
+            widget: "select"
+            options: ["small", "medium", "large"]
+            default: "large"
+          - label: "Sticky Image (stays in place while scrolling)"
+            name: "stickyImage"
+            widget: "boolean"
+            default: true
+          - label: "Show Read More Button"
+            name: "showReadMore"
+            widget: "boolean"
+            default: true
+          - label: "Paragraphs to Show Before Read More"
+            name: "readMoreLimit"
+            widget: "number"
+            default: 2
+          - label: "Background Color"
+            name: "backgroundColor"
+            widget: "select"
+            options: ["gradient", "solid", "transparent"]
+            default: "gradient"
       - label: "Upcoming Concerts"
         name: "concerts"
         file: "content/upcoming-concerts.md"
         fields:
+          - label: "Header"
+            name: "header"
+            widget: "string"
+            default: "Upcoming Concerts"
+          - label: "Description"
+            name: "description"
+            widget: "text"
+            default: "Join Luke Benedict for his upcoming performances and musical events"
+          - label: "Layout"
+            name: "layout"
+            widget: "select"
+            options: ["grid", "list", "carousel"]
+            default: "grid"
+          - label: "Concerts Per Row"
+            name: "concertsPerRow"
+            widget: "number"
+            default: 3
+            min: 1
+            max: 4
           - label: "Concerts"
             name: "concerts"
             widget: "list"
@@ -52,11 +136,81 @@ collections:
               - { label: "Date and Time", name: "datetime", widget: "datetime" }
               - { label: "Address", name: "address", widget: "string" }
               - { label: "Ticket Link", name: "ticketLink", widget: "string" }
-      - label: "Recordings"
+      - label: "Recordings & Videos"
         name: "recordings"
         file: "content/recordings.md"
-        fields: # This needs to be properly indented and structured as an array
-          - label: "Recordings List List"
+        fields:
+          - label: "Discography Settings"
+            name: "discography"
+            widget: "object"
+            fields:
+              - label: "Header"
+                name: "header"
+                widget: "string"
+                default: "Discography"
+              - label: "Sub-Header"
+                name: "subHeader"
+                widget: "string"
+                default: "Music Releases"
+              - label: "Description"
+                name: "description"
+                widget: "text"
+                default: "Explore Luke's music releases and recorded albums"
+              - label: "Layout"
+                name: "layout"
+                widget: "select"
+                options: ["grid", "carousel", "list"]
+                default: "grid"
+              - label: "Items Per Row"
+                name: "itemsPerRow"
+                widget: "number"
+                default: 3
+                min: 1
+                max: 4
+          - label: "Videos Settings"
+            name: "videos"
+            widget: "object"
+            fields:
+              - label: "Header"
+                name: "header"
+                widget: "string"
+                default: "Videos"
+              - label: "Sub-Header"
+                name: "subHeader"
+                widget: "string"
+                default: "Performances & Compositions"
+              - label: "Description"
+                name: "description"
+                widget: "text"
+                default: "Watch Luke's performances and musical compositions"
+              - label: "Layout"
+                name: "layout"
+                widget: "select"
+                options: ["grid", "carousel", "list"]
+                default: "grid"
+              - label: "Maximum Videos to Show"
+                name: "maxItems"
+                widget: "number"
+                default: 4
+                min: 1
+                max: 12
+              - label: "Show YouTube Channel Link"
+                name: "showYouTubeChannel"
+                widget: "boolean"
+                default: true
+              - label: "YouTube Channel URL"
+                name: "youtubeChannel"
+                widget: "string"
+                required: false
+              - label: "YouTube Channel Button Text"
+                name: "youtubeChannelText"
+                widget: "string"
+                default: "View More Videos"
+              - label: "YouTube Channel Subtext"
+                name: "youtubeChannelSubtext"
+                widget: "string"
+                default: "Subscribe to Luke's Channel"
+          - label: "Recordings List"
             name: "recordings"
             widget: "list"
             fields:
@@ -84,6 +238,69 @@ collections:
           - label: "Header"
             name: "header"
             widget: "string"
+          - label: "Description"
+            name: "description"
+            widget: "text"
+            required: false
+          - label: "Layout"
+            name: "layout"
+            widget: "select"
+            options: ["carousel", "grid", "masonry"]
+            default: "carousel"
+          - label: "Auto Play"
+            name: "autoPlay"
+            widget: "boolean"
+            default: false
+          - label: "Auto Play Seconds"
+            name: "autoPlaySeconds"
+            widget: "number"
+            default: 5
+            min: 3
+            max: 10
+          - label: "Show Navigation Arrows"
+            name: "showArrows"
+            widget: "boolean"
+            default: true
+          - label: "Show Dots Navigation"
+            name: "showDots"
+            widget: "boolean"
+            default: true
+          - label: "Show Image Counter"
+            name: "showCounter"
+            widget: "boolean"
+            default: true
+          - label: "Image Height"
+            name: "imageHeight"
+            widget: "select"
+            options: ["fixed", "auto"]
+            default: "fixed"
+          - label: "Aspect Ratio"
+            name: "aspectRatio"
+            widget: "select"
+            options: ["16:9", "4:3", "1:1", "3:2"]
+            default: "16:9"
+          - label: "Hover Effect"
+            name: "hoverEffect"
+            widget: "select"
+            options: ["zoom", "fade", "none"]
+            default: "zoom"
+          - label: "Container Style"
+            name: "containerStyle"
+            widget: "select"
+            options: ["rounded", "square", "card"]
+            default: "rounded"
+          - label: "Enable Modal (click to enlarge)"
+            name: "enableModal"
+            widget: "boolean"
+            default: true
+          - label: "Enable Keyboard Navigation"
+            name: "enableKeyboardNavigation"
+            widget: "boolean"
+            default: true
+          - label: "Enable Swipe on Mobile"
+            name: "enableSwipe"
+            widget: "boolean"
+            default: true
           - label: "Images"
             name: "images"
             widget: "list"
@@ -95,6 +312,15 @@ collections:
               - label: "Alt Text"
                 name: "alt"
                 widget: "string"
+              - label: "Caption"
+                name: "caption"
+                widget: "string"
+                required: false
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                options: ["portrait", "performance", "event", "studio"]
+                required: false
       - label: "Compositions"
         name: "compositions"
         file: "content/compositions.md"
@@ -102,6 +328,84 @@ collections:
           - label: "Header"
             name: "header"
             widget: "string"
+          - label: "Sub-Header"
+            name: "subHeader"
+            widget: "string"
+            default: "Original Works"
+          - label: "Description"
+            name: "description"
+            widget: "text"
+            default: "A collection of Luke's original musical compositions across various instruments and ensembles"
+          - label: "Show Description"
+            name: "showDescription"
+            widget: "boolean"
+            default: false
+          - label: "Layout"
+            name: "layout"
+            widget: "select"
+            options: ["list", "grid", "table", "accordion"]
+            default: "list"
+          - label: "Container Style"
+            name: "containerStyle"
+            widget: "select"
+            options: ["card", "simple", "bordered"]
+            default: "card"
+          - label: "Scroll Height (in Tailwind units)"
+            name: "scrollHeight"
+            widget: "select"
+            options: ["64", "80", "96", "screen"]
+            default: "96"
+          - label: "Show Duration"
+            name: "showDuration"
+            widget: "boolean"
+            default: true
+          - label: "Show Instrumentation"
+            name: "showInstrumentation"
+            widget: "boolean"
+            default: true
+          - label: "Show Year"
+            name: "showYear"
+            widget: "boolean"
+            default: false
+          - label: "Show Genre"
+            name: "showGenre"
+            widget: "boolean"
+            default: false
+          - label: "Sort By"
+            name: "sortBy"
+            widget: "select"
+            options: ["title", "duration", "year", "instrumentation"]
+            default: "title"
+          - label: "Max Items (0 = show all)"
+            name: "maxItems"
+            widget: "number"
+            default: 0
+            min: 0
+          - label: "Enable Scroll"
+            name: "enableScroll"
+            widget: "boolean"
+            default: true
+          - label: "Show Item Numbers"
+            name: "showItemNumbers"
+            widget: "boolean"
+            default: false
+          - label: "Item Spacing"
+            name: "itemSpacing"
+            widget: "select"
+            options: ["compact", "comfortable", "spacious"]
+            default: "comfortable"
+          - label: "Hover Effect"
+            name: "hoverEffect"
+            widget: "boolean"
+            default: true
+          - label: "Show Icons"
+            name: "showIcons"
+            widget: "boolean"
+            default: true
+          - label: "Alternating Row Colors"
+            name: "alternatingRows"
+            widget: "boolean"
+            default: false
           - label: "Compositions"
             name: "compositions"
             widget: "list"
@@ -118,4 +422,207 @@ collections:
             widget: "string"
           - label: "Description"
             name: "description"
+            widget: "text"
+          - label: "Layout"
+            name: "layout"
+            widget: "select"
+            options: ["side-by-side", "form-only", "split"]
+            default: "side-by-side"
+          - label: "Form Position"
+            name: "formPosition"
+            widget: "select"
+            options: ["left", "right", "center"]
+            default: "right"
+          - label: "Show Contact Info"
+            name: "showContactInfo"
+            widget: "boolean"
+            default: true
+          - label: "Show Social Links"
+            name: "showSocialLinks"
+            widget: "boolean"
+            default: true
+          - label: "Form Configuration"
+            name: "form"
+            widget: "object"
+            fields:
+              - label: "Form Enabled"
+                name: "enabled"
+                widget: "boolean"
+                default: true
+              - label: "Form Fields"
+                name: "fields"
+                widget: "object"
+                fields:
+                  - label: "Name Field"
+                    name: "name"
+                    widget: "object"
+                    fields:
+                      - label: "Enabled"
+                        name: "enabled"
+                        widget: "boolean"
+                        default: true
+                      - label: "Required"
+                        name: "required"
+                        widget: "boolean"
+                        default: true
+                      - label: "Label"
+                        name: "label"
+                        widget: "string"
+                        default: "Full Name"
+                      - label: "Placeholder"
+                        name: "placeholder"
+                        widget: "string"
+                        default: "Enter your full name"
+                  - label: "Email Field"
+                    name: "email"
+                    widget: "object"
+                    fields:
+                      - label: "Enabled"
+                        name: "enabled"
+                        widget: "boolean"
+                        default: true
+                      - label: "Required"
+                        name: "required"
+                        widget: "boolean"
+                        default: true
+                      - label: "Label"
+                        name: "label"
+                        widget: "string"
+                        default: "Email Address"
+                      - label: "Placeholder"
+                        name: "placeholder"
+                        widget: "string"
+                        default: "your@email.com"
+                  - label: "Phone Field"
+                    name: "phone"
+                    widget: "object"
+                    fields:
+                      - label: "Enabled"
+                        name: "enabled"
+                        widget: "boolean"
+                        default: true
+                      - label: "Required"
+                        name: "required"
+                        widget: "boolean"
+                        default: true
+                      - label: "Label"
+                        name: "label"
+                        widget: "string"
+                        default: "Phone Number"
+                      - label: "Placeholder"
+                        name: "placeholder"
+                        widget: "string"
+                        default: "(555) 123-4567"
+                  - label: "Subject Field"
+                    name: "subject"
+                    widget: "object"
+                    fields:
+                      - label: "Enabled"
+                        name: "enabled"
+                        widget: "boolean"
+                        default: false
+                      - label: "Required"
+                        name: "required"
+                        widget: "boolean"
+                        default: false
+                      - label: "Label"
+                        name: "label"
+                        widget: "string"
+                        default: "Subject"
+                      - label: "Placeholder"
+                        name: "placeholder"
+                        widget: "string"
+                        default: "What is this regarding?"
+                  - label: "Message Field"
+                    name: "message"
+                    widget: "object"
+                    fields:
+                      - label: "Enabled"
+                        name: "enabled"
+                        widget: "boolean"
+                        default: true
+                      - label: "Required"
+                        name: "required"
+                        widget: "boolean"
+                        default: true
+                      - label: "Label"
+                        name: "label"
+                        widget: "string"
+                        default: "Message"
+                      - label: "Placeholder"
+                        name: "placeholder"
+                        widget: "string"
+                        default: "Tell us about your project, event, or inquiry..."
+                      - label: "Rows"
+                        name: "rows"
+                        widget: "number"
+                        default: 6
+                        min: 3
+                        max: 10
+          - label: "Submit Button Configuration"
+            name: "submitButton"
+            widget: "object"
+            fields:
+              - label: "Button Text"
+                name: "text"
+                widget: "string"
+                default: "Send Message"
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                options: ["send", "arrow", "none"]
+                default: "send"
+              - label: "Button Style"
+                name: "style"
+                widget: "select"
+                options: ["primary", "secondary", "outline"]
+                default: "primary"
+              - label: "Loading Text"
+                name: "loadingText"
+                widget: "string"
+                default: "Sending Message..."
+          - label: "Messages"
+            name: "messages"
+            widget: "object"
+            fields:
+              - label: "Success Message"
+                name: "success"
+                widget: "text"
+                default: "Thank you! Your message has been sent successfully."
+              - label: "Error Message"
+                name: "error"
+                widget: "text"
+                default: "Sorry, there was an error sending your message. Please try again."
+          - label: "Contact Information"
+            name: "contactInfo"
+            widget: "object"
+            fields:
+              - label: "Email"
+                name: "email"
+                widget: "string"
+                required: false
+              - label: "Phone"
+                name: "phone"
+                widget: "string"
+                required: false
+              - label: "Address"
+                name: "address"
+                widget: "text"
+                required: false
+              - label: "Hours"
+                name: "hours"
+                widget: "string"
+                required: false
+          - label: "Background Color"
+            name: "backgroundColor"
+            widget: "select"
+            options: ["solid", "gradient", "image"]
+            default: "solid"
+          - label: "Background Style"
+            name: "backgroundStyle"
             widget: "string"
+            default: "white"
+          - label: "Dark Background Style"
+            name: "darkBackgroundStyle"
+            widget: "string"
+            default: "gray-900"

@@ -16,19 +16,27 @@ interface Recording {
 
 interface VideosData {
   recordings: Recording[];
-  youtubeChannel?: string;
+  videos: {
+    header: string;
+    description: string;
+    maxItems: number;
+    showYouTubeChannel: boolean;
+    youtubeChannel: string;
+    youtubeChannelText: string;
+    youtubeChannelSubtext: string;
+  };
 }
 
 const Videos = () => {
-  const { recordings, youtubeChannel } = attributes as VideosData;
+  const { recordings, videos } = attributes as VideosData;
   const [isClient, setIsClient] = useState(false);
   
   useEffect(() => {
     setIsClient(true);
   }, []);
   
-  // Filter only video content and limit to 4
-  const videos = recordings.filter(recording => recording.type === "Video URL").slice(0, 4);
+  // Filter only video content and limit based on config
+  const videoItems = recordings.filter(recording => recording.type === "Video URL").slice(0, videos.maxItems);
 
   return (
     <section id="videos" className="section-padding bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 transition-colors relative overflow-hidden">
@@ -37,16 +45,16 @@ const Videos = () => {
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight">
-            Videos
+            {videos.header}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto animate-scale-in"></div>
           <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mt-8 max-w-2xl mx-auto font-light leading-relaxed">
-            Watch Luke&apos;s performances and musical compositions
+            {videos.description}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 animate-fade-in">
-          {videos.map((video, index) => (
+          {videoItems.map((video, index) => (
             <div 
               key={index}
               className="group bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 animate-slide-up"
@@ -96,18 +104,18 @@ const Videos = () => {
           ))}
         </div>
 
-        {youtubeChannel && (
+        {videos.showYouTubeChannel && videos.youtubeChannel && (
           <div className="text-center animate-slide-up" style={{ animationDelay: "0.4s" }}>
             <a
-              href={youtubeChannel}
+              href={videos.youtubeChannel}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-4 bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105"
             >
               <FontAwesomeIcon icon={faYoutube} className="text-2xl" />
               <div className="text-left">
-                <div className="text-lg">View More Videos</div>
-                <div className="text-sm opacity-90">Subscribe to Luke&apos;s Channel</div>
+                <div className="text-lg">{videos.youtubeChannelText}</div>
+                <div className="text-sm opacity-90">{videos.youtubeChannelSubtext}</div>
               </div>
               <FontAwesomeIcon icon={faExternalLinkAlt} className="text-sm opacity-70" />
             </a>

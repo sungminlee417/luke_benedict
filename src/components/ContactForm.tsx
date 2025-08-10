@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { attributes } from "../../content/contact-form.md";
+import { splitIntoParagraphs } from "../utils/textUtils";
 
 const CONTACT_FORM_SCHEMA = yup.object().shape({
   name: yup.string().required("Name is required"),
@@ -23,10 +24,63 @@ const CONTACT_FORM_SCHEMA = yup.object().shape({
 interface ContactFormAttributes {
   header: string;
   description: string;
+  form?: {
+    fields?: {
+      name?: { label?: string; placeholder?: string };
+      email?: { label?: string; placeholder?: string };
+      phone?: { label?: string; placeholder?: string };
+      message?: { label?: string; placeholder?: string; rows?: number };
+    };
+  };
+  submitButton?: {
+    text?: string;
+    loadingText?: string;
+  };
+  messages?: {
+    success?: string;
+    error?: string;
+  };
 }
 
 const ContactForm = () => {
-  const { header, description } = attributes as ContactFormAttributes;
+  const { 
+    header, 
+    description,
+    form = {},
+    submitButton = {},
+    messages = {}
+  } = attributes as ContactFormAttributes;
+  
+  // Extract form field configurations with defaults
+  const formFields = {
+    name: {
+      label: form?.fields?.name?.label || "Full Name",
+      placeholder: form?.fields?.name?.placeholder || "Enter your full name"
+    },
+    email: {
+      label: form?.fields?.email?.label || "Email Address",
+      placeholder: form?.fields?.email?.placeholder || "your@email.com"
+    },
+    phone: {
+      label: form?.fields?.phone?.label || "Phone Number",
+      placeholder: form?.fields?.phone?.placeholder || "(555) 123-4567"
+    },
+    message: {
+      label: form?.fields?.message?.label || "Message",
+      placeholder: form?.fields?.message?.placeholder || "Tell us about your project, event, or inquiry...",
+      rows: form?.fields?.message?.rows || 6
+    }
+  };
+  
+  const buttonConfig = {
+    text: submitButton?.text || "Send Message",
+    loadingText: submitButton?.loadingText || "Sending Message..."
+  };
+  
+  const messageConfig = {
+    success: messages?.success || "Thank you! Your message has been sent successfully.",
+    error: messages?.error || "Sorry, there was an error sending your message. Please try again."
+  };
   const [loading, setLoading] = useState<boolean>(false);
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
@@ -81,9 +135,16 @@ const ContactForm = () => {
                 {header}
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mb-6 animate-scale-in"></div>
-              <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-light">
-                {description}
-              </p>
+              <div className="space-y-4">
+                {splitIntoParagraphs(description).map((paragraph, index) => (
+                  <p 
+                    key={index}
+                    className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-light"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -95,12 +156,12 @@ const ContactForm = () => {
                     className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
                     htmlFor="name"
                   >
-                    Full Name
+                    {formFields.name.label}
                   </label>
                   <input
                     {...register("name")}
                     className="w-full p-4 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:border-primary dark:focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300 group-hover:border-gray-300 dark:group-hover:border-gray-500"
-                    placeholder="Enter your full name"
+                    placeholder={formFields.name.placeholder}
                     type="text"
                     id="name"
                   />
@@ -117,12 +178,12 @@ const ContactForm = () => {
                       className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
                       htmlFor="email"
                     >
-                      Email Address
+                      {formFields.email.label}
                     </label>
                     <input
                       {...register("email")}
                       className="w-full p-4 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:border-primary dark:focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300 group-hover:border-gray-300 dark:group-hover:border-gray-500"
-                      placeholder="your@email.com"
+                      placeholder={formFields.email.placeholder}
                       type="email"
                       id="email"
                     />
@@ -138,12 +199,12 @@ const ContactForm = () => {
                       className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
                       htmlFor="phone"
                     >
-                      Phone Number
+                      {formFields.phone.label}
                     </label>
                     <input
                       {...register("phone")}
                       className="w-full p-4 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:border-primary dark:focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300 group-hover:border-gray-300 dark:group-hover:border-gray-500"
-                      placeholder="(555) 123-4567"
+                      placeholder={formFields.phone.placeholder}
                       type="tel"
                       id="phone"
                     />
@@ -160,13 +221,13 @@ const ContactForm = () => {
                     className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
                     htmlFor="message"
                   >
-                    Message
+                    {formFields.message.label}
                   </label>
                   <textarea
                     {...register("message")}
                     className="w-full p-4 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:border-primary dark:focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300 group-hover:border-gray-300 dark:group-hover:border-gray-500 resize-none"
-                    placeholder="Tell us about your project, event, or inquiry..."
-                    rows={6}
+                    placeholder={formFields.message.placeholder}
+                    rows={formFields.message.rows}
                     id="message"
                   ></textarea>
                   {errors.message && (
@@ -188,11 +249,11 @@ const ContactForm = () => {
                       {loading ? (
                         <>
                           <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
-                          <span>Sending Message...</span>
+                          <span>{buttonConfig.loadingText}</span>
                         </>
                       ) : (
                         <>
-                          <span className="mr-2">Send Message</span>
+                          <span className="mr-2">{buttonConfig.text}</span>
                           <svg
                             className="w-5 h-5 transform transition-transform group-hover:translate-x-1"
                             fill="none"
@@ -230,7 +291,7 @@ const ContactForm = () => {
                         </svg>
                       </div>
                       <span className="font-semibold">
-                        Thank you! Your message has been sent successfully.
+                        {messageConfig.success}
                       </span>
                     </p>
                   </div>
@@ -253,8 +314,7 @@ const ContactForm = () => {
                         </svg>
                       </div>
                       <span className="font-semibold">
-                        Sorry, there was an error sending your message. Please
-                        try again.
+                        {messageConfig.error}
                       </span>
                     </p>
                   </div>

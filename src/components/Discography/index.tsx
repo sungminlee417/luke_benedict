@@ -15,7 +15,14 @@ interface Recording {
 }
 
 const Discography = () => {
-  const { recordings } = attributes as { recordings: Recording[] };
+  const { recordings, discography } = attributes as { 
+    recordings: Recording[];
+    discography: {
+      header: string;
+      description: string;
+      itemsPerRow: number;
+    };
+  };
   
   // Filter only music releases (albums/songs)
   const musicReleases = recordings.filter(recording => recording.type === "Image Link");
@@ -41,16 +48,21 @@ const Discography = () => {
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
-            Discography
+            {discography.header}
           </h2>
           <div className="w-32 h-1.5 bg-white/80 mx-auto rounded-full animate-scale-in"></div>
           <div className="w-16 h-0.5 bg-white/60 mx-auto rounded-full mt-2 animate-scale-in" style={{ animationDelay: "0.2s" }}></div>
           <p className="text-lg md:text-xl text-white/90 mt-6 max-w-2xl mx-auto font-light">
-            Explore Luke&apos;s music releases and recorded albums
+            {discography.description}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in">
+        <div className={`grid grid-cols-1 ${
+          discography.itemsPerRow === 1 ? '' :
+          discography.itemsPerRow === 2 ? 'md:grid-cols-2' :
+          discography.itemsPerRow === 4 ? 'md:grid-cols-2 lg:grid-cols-4' :
+          'md:grid-cols-2 lg:grid-cols-3'
+        } gap-8 animate-fade-in`}>
           {musicReleases.map((release, index) => (
             <div 
               key={index}
