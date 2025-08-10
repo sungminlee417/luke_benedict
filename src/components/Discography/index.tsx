@@ -46,7 +46,7 @@ const Discography = () => {
           <div className="w-32 h-1.5 bg-white/80 mx-auto rounded-full animate-scale-in"></div>
           <div className="w-16 h-0.5 bg-white/60 mx-auto rounded-full mt-2 animate-scale-in" style={{ animationDelay: "0.2s" }}></div>
           <p className="text-lg md:text-xl text-white/90 mt-6 max-w-2xl mx-auto font-light">
-            Explore Luke's music releases and recorded albums
+            Explore Luke&apos;s music releases and recorded albums
           </p>
         </div>
 

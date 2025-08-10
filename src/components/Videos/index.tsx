@@ -41,7 +41,7 @@ const Videos = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto animate-scale-in"></div>
           <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mt-8 max-w-2xl mx-auto font-light leading-relaxed">
-            Watch Luke's performances and musical compositions
+            Watch Luke&apos;s performances and musical compositions
           </p>
         </div>
 
@@ -107,7 +107,7 @@ const Videos = () => {
               <FontAwesomeIcon icon={faYoutube} className="text-2xl" />
               <div className="text-left">
                 <div className="text-lg">View More Videos</div>
-                <div className="text-sm opacity-90">Subscribe to Luke's Channel</div>
+                <div className="text-sm opacity-90">Subscribe to Luke&apos;s Channel</div>
               </div>
               <FontAwesomeIcon icon={faExternalLinkAlt} className="text-sm opacity-70" />
             </a>
