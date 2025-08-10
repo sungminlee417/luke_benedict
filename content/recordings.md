@@ -1,4 +1,5 @@
 ---
+youtubeChannel: "https://www.youtube.com/channel/UC6MX_fM6ewQSVmRc_Mmlr9g"
 recordings:
   - type: Video URL
     url: https://youtu.be/6sIosaXDptQ?si=HgKVjqHUD1I3aRsZ

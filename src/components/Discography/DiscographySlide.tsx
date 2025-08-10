@@ -8,7 +8,7 @@ interface DiscographySlideProps {
     header: string;
     type: string;
     url: string;
-    image?: StaticImageData;
+    image?: string;
   };
 }
 
@@ -40,12 +40,13 @@ const DiscographySlide = ({ slide }: DiscographySlideProps) => {
         />
       )}
       {slide.type === "Image Link" && slide.image && (
-        <div className="relative flex-grow">
+        <div className="relative flex-grow min-h-96 h-96">
           <Image
-            src={slide.image}
+            src={`/${slide.image}`}
             alt={slide.header}
             fill
             style={{ objectFit: 'contain' }}
+            className="rounded-lg"
           />
         </div>
       )}

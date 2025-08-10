@@ -38,6 +38,7 @@ const Gallery = () => {
     {}
   );
   const [modalImageLoading, setModalImageLoading] = useState(false);
+  const [controlsHovered, setControlsHovered] = useState(false);
 
   const handleImageClick = (image: GalleryImage, index: number) => {
     setSelectedImage(image);
@@ -91,51 +92,51 @@ const Gallery = () => {
     <section id="gallery" className="section-padding">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight">
             {header}
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full animate-scale-in"></div>
         </div>
 
-        <div
-          className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden transition-colors h-96 group"
-          onKeyDown={handleKeyDown}
-          tabIndex={0}
-          role="region"
-          aria-label={`${header} image carousel`}
-        >
-          <div className="relative h-full">
-            <div className="embla h-full">
-              <div className="embla__viewport h-full" ref={emblaRef}>
-                <div className="embla__container flex h-full">
-                  {images.map((image, i) => (
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden transition-colors h-96">
+          <div
+            className="relative h-full group"
+            onKeyDown={handleKeyDown}
+            tabIndex={0}
+            role="region"
+            aria-label={`${header} image carousel`}
+          >
+          <div className="embla h-full">
+            <div className="embla__viewport h-full" ref={emblaRef}>
+              <div className="embla__container flex h-full">
+                {images.map((image, i) => (
+                  <div
+                    key={i}
+                    className="embla__slide flex-none w-full h-full relative"
+                  >
                     <div
-                      key={i}
-                      className="embla__slide flex-none w-full h-full relative p-4"
+                      className="relative w-full h-full bg-white dark:bg-gray-800 overflow-hidden group cursor-pointer p-4"
+                      onClick={() => handleImageClick(image, i)}
                     >
-                      <div
-                        className="relative w-full h-full bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden group cursor-pointer"
-                        onClick={() => handleImageClick(image, i)}
-                      >
                         <Image
                           src={`/${image.image}`}
                           alt={image.alt || "gallery image"}
                           fill
                           style={{ objectFit: "contain" }}
-                          className="transition-all duration-300 group-hover:scale-[1.02]"
+                          className={`transition-all duration-300 ${!controlsHovered ? 'group-hover:scale-[1.02]' : ''}`}
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           priority={i === 0}
                           onLoad={() => handleImageLoad(i)}
                         />
                         {!imagesLoaded[i] && (
-                          <div className="absolute inset-0 bg-gray-100 dark:bg-gray-700 animate-pulse flex items-center justify-center">
+                          <div className="absolute inset-0 bg-white dark:bg-gray-800 animate-pulse flex items-center justify-center">
                             <div className="text-gray-400 dark:text-gray-500 text-sm">
                               Loading...
                             </div>
                           </div>
                         )}
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-300 flex items-center justify-center">
-                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-full p-3">
+                        <div className="absolute inset-0 transition-all duration-300 flex items-center justify-center pointer-events-none">
+                          <div className={`${controlsHovered ? 'opacity-0' : 'opacity-0 group-hover:opacity-100'} transition-opacity duration-300 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-full p-3`}>
                             <svg
                               className="w-5 h-5 text-neutral dark:text-gray-300"
                               fill="none"
@@ -159,7 +160,17 @@ const Gallery = () => {
             </div>
 
             {/* Navigation Controls */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center gap-4 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-gray-200 dark:border-gray-600">
+            <div 
+              className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center gap-4 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-gray-200 dark:border-gray-600 z-20"
+              onMouseEnter={(e) => {
+                e.stopPropagation();
+                setControlsHovered(true);
+              }}
+              onMouseLeave={(e) => {
+                e.stopPropagation();
+                setControlsHovered(false);
+              }}
+            >
               <button
                 onClick={onPrevButtonClick}
                 disabled={prevBtnDisabled}
