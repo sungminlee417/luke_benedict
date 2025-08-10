@@ -9,7 +9,10 @@ import Fade from "embla-carousel-fade";
 import { usePrevNextButtons } from "../EmblaCarousel/EmblaCarouselArrowButtons";
 import ImageModal from "./ImageModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface GalleryImage {
   image: string;
@@ -19,15 +22,15 @@ interface GalleryImage {
 const OPTIONS: EmblaOptionsType = { loop: true, duration: 30 };
 
 const Gallery = () => {
-  const { 
-    header, 
+  const {
+    header,
     description,
     images,
     layout = "carousel",
     showArrows = true,
     showDots = true,
     showCounter = true,
-    enableModal = true
+    enableModal = true,
   } = attributes as {
     header: string;
     description?: string;
@@ -111,7 +114,7 @@ const Gallery = () => {
             {header}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full animate-scale-in"></div>
-          {description && (
+          {description && description && description.trim().length > 0 && (
             <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mt-8 max-w-2xl mx-auto font-light leading-relaxed">
               {description}
             </p>
@@ -126,24 +129,28 @@ const Gallery = () => {
             role="region"
             aria-label={`${header} image carousel`}
           >
-          <div className="embla h-full">
-            <div className="embla__viewport h-full" ref={emblaRef}>
-              <div className="embla__container flex h-full">
-                {images.map((image, i) => (
-                  <div
-                    key={i}
-                    className="embla__slide flex-none w-full h-full relative"
-                  >
+            <div className="embla h-full">
+              <div className="embla__viewport h-full" ref={emblaRef}>
+                <div className="embla__container flex h-full">
+                  {images.map((image, i) => (
                     <div
-                      className="relative w-full h-full bg-white dark:bg-gray-800 overflow-hidden group cursor-pointer p-4"
-                      onClick={() => enableModal && handleImageClick(image, i)}
+                      key={i}
+                      className="embla__slide flex-none w-full h-full relative"
                     >
+                      <div
+                        className="relative w-full h-full bg-white dark:bg-gray-800 overflow-hidden group cursor-pointer p-4"
+                        onClick={() =>
+                          enableModal && handleImageClick(image, i)
+                        }
+                      >
                         <Image
                           src={`/${image.image}`}
                           alt={image.alt || "gallery image"}
                           fill
                           style={{ objectFit: "contain" }}
-                          className={`transition-all duration-300 ${!controlsHovered ? 'group-hover:scale-[1.02]' : ''}`}
+                          className={`transition-all duration-300 ${
+                            !controlsHovered ? "group-hover:scale-[1.02]" : ""
+                          }`}
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           priority={i === 0}
                           onLoad={() => handleImageLoad(i)}
@@ -156,7 +163,13 @@ const Gallery = () => {
                           </div>
                         )}
                         <div className="absolute inset-0 transition-all duration-300 flex items-center justify-center pointer-events-none">
-                          <div className={`${controlsHovered ? 'opacity-0' : 'opacity-0 group-hover:opacity-100'} transition-opacity duration-300 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-full p-3`}>
+                          <div
+                            className={`${
+                              controlsHovered
+                                ? "opacity-0"
+                                : "opacity-0 group-hover:opacity-100"
+                            } transition-opacity duration-300 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-full p-3`}
+                          >
                             <svg
                               className="w-5 h-5 text-neutral dark:text-gray-300"
                               fill="none"
@@ -181,55 +194,55 @@ const Gallery = () => {
 
             {/* Navigation Controls */}
             {(showArrows || showCounter) && (
-            <div 
-              className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center gap-4 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-gray-200 dark:border-gray-600 z-20"
-              onMouseEnter={(e) => {
-                e.stopPropagation();
-                setControlsHovered(true);
-              }}
-              onMouseLeave={(e) => {
-                e.stopPropagation();
-                setControlsHovered(false);
-              }}
-            >
-              {showArrows && (
-                <button
-                  onClick={onPrevButtonClick}
-                  disabled={prevBtnDisabled}
-                  className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-primary hover:scale-110 disabled:opacity-30 disabled:hover:bg-gray-100 dark:disabled:hover:bg-gray-700 disabled:hover:scale-100 transition-all duration-200"
-                  aria-label="Previous image"
-                >
-                  <FontAwesomeIcon 
-                    icon={faChevronLeft} 
-                    className="text-gray-800 dark:text-gray-200" 
-                    size="sm" 
-                  />
-                </button>
-              )}
+              <div
+                className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center gap-4 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-gray-200 dark:border-gray-600 z-20"
+                onMouseEnter={(e) => {
+                  e.stopPropagation();
+                  setControlsHovered(true);
+                }}
+                onMouseLeave={(e) => {
+                  e.stopPropagation();
+                  setControlsHovered(false);
+                }}
+              >
+                {showArrows && (
+                  <button
+                    onClick={onPrevButtonClick}
+                    disabled={prevBtnDisabled}
+                    className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-primary hover:scale-110 disabled:opacity-30 disabled:hover:bg-gray-100 dark:disabled:hover:bg-gray-700 disabled:hover:scale-100 transition-all duration-200"
+                    aria-label="Previous image"
+                  >
+                    <FontAwesomeIcon
+                      icon={faChevronLeft}
+                      className="text-gray-800 dark:text-gray-200"
+                      size="sm"
+                    />
+                  </button>
+                )}
 
-              {showCounter && (
-                <div className="flex items-center gap-1 text-xs font-medium text-gray-800 dark:text-gray-200">
-                  <span>{(emblaApi?.selectedScrollSnap() || 0) + 1}</span>
-                  <span className="text-gray-500">/</span>
-                  <span>{images.length}</span>
-                </div>
-              )}
+                {showCounter && (
+                  <div className="flex items-center gap-1 text-xs font-medium text-gray-800 dark:text-gray-200">
+                    <span>{(emblaApi?.selectedScrollSnap() || 0) + 1}</span>
+                    <span className="text-gray-500">/</span>
+                    <span>{images.length}</span>
+                  </div>
+                )}
 
-              {showArrows && (
-                <button
-                  onClick={onNextButtonClick}
-                  disabled={nextBtnDisabled}
-                  className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-primary hover:scale-110 disabled:opacity-30 disabled:hover:bg-gray-100 dark:disabled:hover:bg-gray-700 disabled:hover:scale-100 transition-all duration-200"
-                  aria-label="Next image"
-                >
-                  <FontAwesomeIcon 
-                    icon={faChevronRight} 
-                    className="text-gray-800 dark:text-gray-200" 
-                    size="sm" 
-                  />
-                </button>
-              )}
-            </div>
+                {showArrows && (
+                  <button
+                    onClick={onNextButtonClick}
+                    disabled={nextBtnDisabled}
+                    className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-primary hover:scale-110 disabled:opacity-30 disabled:hover:bg-gray-100 dark:disabled:hover:bg-gray-700 disabled:hover:scale-100 transition-all duration-200"
+                    aria-label="Next image"
+                  >
+                    <FontAwesomeIcon
+                      icon={faChevronRight}
+                      className="text-gray-800 dark:text-gray-200"
+                      size="sm"
+                    />
+                  </button>
+                )}
+              </div>
             )}
           </div>
         </div>

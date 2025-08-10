@@ -3,41 +3,38 @@
 
 # ✏️ MAIN CONTENT (edit these)
 header: Gallery
-description: |
-  A visual journey through Luke's musical performances and moments. These images capture the essence of his artistry and the energy of live performance.
-  
-  Click on any image to view it in full size and navigate through the collection.
+description:
 
 # 🎨 DISPLAY OPTIONS (choose from the dropdowns)
 
 # How to show the photos:
-layout: "carousel"  # Options: carousel | grid | masonry
+layout: "carousel" # Options: carousel | grid | masonry
 
 # Should photos automatically change:
-autoPlay: false  # Options: true | false
+autoPlay: false # Options: true | false
 
 # How long to show each photo (if autoplay is on):
-autoPlaySeconds: 5  # Options: 3 | 5 | 7 | 10
+autoPlaySeconds: 5 # Options: 3 | 5 | 7 | 10
 
 # Show navigation controls:
-showArrows: true     # Options: true | false
-showDots: true       # Options: true | false
-showCounter: true    # Options: true | false
+showArrows: true # Options: true | false
+showDots: true # Options: true | false
+showCounter: true # Options: true | false
 
 # Photo display settings:
-imageHeight: "fixed"     # Options: fixed | auto
-aspectRatio: "16:9"      # Options: 16:9 | 4:3 | 1:1 | 3:2
+imageHeight: "fixed" # Options: fixed | auto
+aspectRatio: "16:9" # Options: 16:9 | 4:3 | 1:1 | 3:2
 
 # Photo effects when hovering:
-hoverEffect: "zoom"      # Options: zoom | fade | none
+hoverEffect: "zoom" # Options: zoom | fade | none
 
 # Gallery style:
-containerStyle: "rounded"  # Options: rounded | square | card
+containerStyle: "rounded" # Options: rounded | square | card
 
 # 📱 INTERACTION OPTIONS
-enableModal: true            # Click to open full-size view
-enableKeyboardNavigation: true  # Use arrow keys to navigate
-enableSwipe: true           # Swipe on mobile devices
+enableModal: true # Click to open full-size view
+enableKeyboardNavigation: true # Use arrow keys to navigate
+enableSwipe: true # Swipe on mobile devices
 
 # 🔧 TECHNICAL SETTINGS (leave as-is unless you need to change)
 enabled: true
@@ -57,7 +54,7 @@ images:
   - image: img/luke_053025_pieced-media_-96.jpg
     alt: "Luke Benedict"
     caption: ""
-    category: "portrait"  
+    category: "portrait"
   - image: img/luke_053025_pieced-media_-7.jpg
     alt: "Luke Benedict"
     caption: ""
