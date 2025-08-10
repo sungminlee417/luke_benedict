@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
 import { attributes } from "../../content/biography.md";
 
@@ -14,6 +16,11 @@ interface AboutPageAttributes {
 
 const Biography = () => {
   const { image, header, paragraphs } = attributes as AboutPageAttributes;
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  // Show only first 2 paragraphs initially
+  const shouldTruncate = paragraphs.length > 2;
+  const displayedParagraphs = isExpanded ? paragraphs : paragraphs.slice(0, 2);
 
   return (
     <section
@@ -45,23 +52,57 @@ const Biography = () => {
               <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full animate-scale-in"></div>
             </div>
             <article className="space-y-6">
-              {paragraphs.map((paragraph, i) => (
-                <p 
-                  key={i} 
-                  className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-light tracking-wide animate-slide-up"
-                  style={{ animationDelay: `${0.1 * (i + 1)}s` }}
-                >
-                  {paragraph.text}
-                </p>
-              ))}
+              <div
+                className={`transition-all duration-500 ease-in-out ${
+                  isExpanded ? "max-h-none" : "max-h-full"
+                } overflow-hidden`}
+              >
+                {displayedParagraphs.map((paragraph, i) => (
+                  <p
+                    key={i}
+                    className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-light tracking-wide animate-slide-up mb-6"
+                    style={{ animationDelay: `${0.1 * (i + 1)}s` }}
+                  >
+                    {paragraph.text}
+                  </p>
+                ))}
+              </div>
+
+              {shouldTruncate && (
+                <div className="pt-4">
+                  <button
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    className="inline-flex items-center gap-2 text-primary hover:text-secondary font-semibold transition-colors duration-200 group"
+                  >
+                    <span>{isExpanded ? "Read less" : "Read more"}</span>
+                    <svg
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        isExpanded ? "rotate-180" : ""
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              )}
             </article>
-            <div 
+            <div
               className="pt-6 animate-slide-up"
               style={{ animationDelay: `${0.1 * (paragraphs.length + 2)}s` }}
             >
               <div className="flex items-center gap-4 text-gray-600 dark:text-gray-400">
                 <div className="w-12 h-px bg-gradient-to-r from-primary to-transparent"></div>
-                <span className="text-sm font-medium uppercase tracking-wider">Composer & Pianist</span>
+                <span className="text-sm font-medium uppercase tracking-wider">
+                  Composer & Pianist
+                </span>
               </div>
             </div>
           </div>
