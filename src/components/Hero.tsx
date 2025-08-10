@@ -16,10 +16,9 @@ const Hero = () => {
   return (
     <section 
       id="hero" 
-      className="hero min-h-screen relative overflow-hidden bg-cover bg-center bg-no-repeat bg-fixed"
+      className="hero min-h-screen relative overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: `url('/${backgroundImage}')`,
-        backgroundAttachment: 'fixed'
       }}
     >
       <div className="hero-overlay bg-gradient-to-b from-black/40 to-black/60 dark:from-black/20 dark:to-black/40 absolute inset-0 transition-colors"></div>
