@@ -32,10 +32,22 @@ const Biography = () => {
     backgroundColor = "gradient"
   } = attributes as AboutPageAttributes;
   const [isExpanded, setIsExpanded] = useState(false);
+  const [buttonText, setButtonText] = useState("Read more");
+  
+  const handleToggle = () => {
+    if (isExpanded) {
+      // Collapsing: change button text immediately, then collapse
+      setButtonText("Read more");
+      setTimeout(() => setIsExpanded(false), 50);
+    } else {
+      // Expanding: expand first, then change button text
+      setIsExpanded(true);
+      setTimeout(() => setButtonText("Read less"), 400);
+    }
+  };
 
   // Use utility function to handle text processing
   const { truncated, shouldTruncate, full } = truncateContent(content, readMoreLimit);
-  const displayedParagraphs = isExpanded ? full : truncated;
   
   // Only show read more if enabled and should truncate
   const showReadMoreButton = showReadMore && shouldTruncate;
@@ -74,29 +86,33 @@ const Biography = () => {
               <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full animate-scale-in"></div>
             </div>
             <article className="space-y-6">
-              <div
-                className={`transition-all duration-500 ease-in-out ${
-                  isExpanded ? "max-h-none" : "max-h-full"
-                } overflow-hidden`}
-              >
-                {displayedParagraphs.map((paragraph, i) => (
-                  <p
-                    key={i}
-                    className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-light tracking-wide animate-slide-up mb-6"
-                    style={{ animationDelay: `${0.1 * (i + 1)}s` }}
-                  >
-                    {paragraph}
-                  </p>
-                ))}
+              <div className="relative">
+                <div className={`transition-all duration-500 ease-in-out ${
+                  isExpanded ? 'max-h-[2000px]' : 'max-h-[320px]'
+                } ${!isExpanded ? 'overflow-hidden' : ''}`}>
+                  {full.map((paragraph, i) => (
+                    <p
+                      key={i}
+                      className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-light tracking-wide mb-6"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+                
+                {/* Fade-out gradient overlay */}
+                {!isExpanded && showReadMoreButton && (
+                  <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-50 via-gray-50/80 to-transparent dark:from-gray-800 dark:via-gray-800/80 dark:to-transparent pointer-events-none transition-opacity duration-300"></div>
+                )}
               </div>
 
               {showReadMoreButton && (
                 <div className="pt-4">
                   <button
-                    onClick={() => setIsExpanded(!isExpanded)}
+                    onClick={handleToggle}
                     className="inline-flex items-center gap-2 text-primary hover:text-secondary font-semibold transition-colors duration-200 group"
                   >
-                    <span>{isExpanded ? "Read less" : "Read more"}</span>
+                    <span>{buttonText}</span>
                     <svg
                       className={`w-4 h-4 transition-transform duration-200 ${
                         isExpanded ? "rotate-180" : ""
