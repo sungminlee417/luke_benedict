@@ -1,16 +1,17 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: sungminlee417/luke_benedict # Replace with your GitHub username/repo
   branch: main
 
 media_folder: public/img
 public_folder: img
 
 # Display configuration
-display_url: https://lukebenedict.netlify.app
-logo_url: https://lukebenedict.netlify.app/img/logo.png
+display_url: https://lukebenedict.com
+logo_url: https://lukebenedict.com/img/logo.png
 
 # Site settings
-site_url: https://lukebenedict.netlify.app
+site_url: https://lukebenedict.com
 show_preview_links: true
 slug:
   encoding: "ascii"
@@ -52,7 +53,16 @@ collections:
           - label: "Button Destination"
             name: "buttonDestination"
             widget: "select"
-            options: ["biography", "concerts", "discography", "videos", "compositions", "gallery", "contact"]
+            options:
+              [
+                "biography",
+                "concerts",
+                "discography",
+                "videos",
+                "compositions",
+                "gallery",
+                "contact",
+              ]
             default: "discography"
           - label: "Text Alignment"
             name: "textAlignment"
