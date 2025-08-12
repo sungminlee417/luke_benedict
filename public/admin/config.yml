@@ -5,31 +5,50 @@ backend:
 media_folder: public/img
 public_folder: img
 
+# Display configuration
+display_url: https://lukebenedict.netlify.app
+logo_url: https://lukebenedict.netlify.app/img/logo.png
+
+# Site settings
+site_url: https://lukebenedict.netlify.app
+show_preview_links: true
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
 collections:
   - name: "pages"
-    label: "Pages"
+    label: "Website Pages"
+    description: "Edit the main sections of your website"
     files:
-      - label: "Hero"
+      - label: "Hero Section"
         name: "hero"
         file: "content/hero.md"
+        description: "The main banner that visitors see first"
         fields:
-          - label: "Header"
+          - label: "Main Headline"
             name: "header"
             widget: "string"
-          - label: "Sub-Header"
+            hint: "The primary text that visitors see first - keep it impactful and concise"
+          - label: "Supporting Text"
             name: "subHeader"
             widget: "string"
-          - label: "Description"
+            hint: "Secondary text that complements your main headline"
+          - label: "Additional Description"
             name: "description"
             widget: "text"
             required: false
-          - label: "Background Image"
+            hint: "Optional detailed description - appears below the sub-header"
+          - label: "Hero Background Image"
             name: "backgroundImage"
             widget: "image"
-          - label: "Button Text"
+            hint: "High-resolution image for the hero section background (recommended: 1920x1080px or larger)"
+          - label: "Call-to-Action Button Text"
             name: "buttonText"
             widget: "string"
             default: "Discover His Music"
+            hint: "Text displayed on the main action button"
           - label: "Button Destination"
             name: "buttonDestination"
             widget: "select"

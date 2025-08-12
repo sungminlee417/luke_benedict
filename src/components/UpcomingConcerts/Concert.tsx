@@ -12,10 +12,10 @@ interface ConcertProps {
 
 const Concert = ({ concert }: ConcertProps) => {
   return (
-    <div className="card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-primary/30 dark:hover:border-primary/30 shadow-md hover:shadow-xl dark:shadow-gray-900/50 transform transition-all duration-300 hover:-translate-y-2 rounded-2xl overflow-hidden">
-      <div className="card-body p-6">
+    <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-primary shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1 rounded-lg overflow-hidden">
+      <div className="p-6">
         <div className="flex justify-between items-start mb-4">
-          <div className="w-3 h-3 rounded-full bg-gradient-to-r from-primary to-secondary"></div>
+          <div className="w-3 h-3 rounded-full bg-primary"></div>
           <span className="text-xs text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wider">Concert</span>
         </div>
         <h3 className="text-xl font-bold text-neutral dark:text-gray-200 mb-3 leading-tight">{concert.title}</h3>
@@ -34,9 +34,9 @@ const Concert = ({ concert }: ConcertProps) => {
             {formatDateTime(concert.datetime)}
           </p>
         </div>
-        <div className="card-actions">
+        <div>
           <a
-            className="btn btn-primary w-full rounded-lg py-3 font-semibold transform transition-all duration-200 hover:scale-[1.02] shadow-md hover:shadow-lg"
+            className="inline-block bg-primary hover:bg-primary/90 text-white w-full text-center rounded-lg py-3 font-semibold transition-colors duration-200"
             href={concert.ticketLink}
             target="_blank"
             rel="noopener noreferrer"

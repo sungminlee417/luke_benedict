@@ -6,13 +6,16 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Footer from "@/layouts/Footer";
 import { DarkModeProvider } from "@/contexts/DarkModeContext";
+import PerformanceMonitor from "@/components/PerformanceMonitor";
 
 config.autoAddCss = false;
 
-const inter = Oswald({ 
+const oswald = Oswald({ 
   subsets: ["latin"],
   display: 'swap',
   variable: '--font-oswald',
+  preload: true,
+  fallback: ['system-ui', 'arial'],
 });
 
 export const metadata: Metadata = {
@@ -45,17 +48,27 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://identity.netlify.com" />
+        <link rel="dns-prefetch" href="https://kit.fontawesome.com" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+      </head>
+      <body className={oswald.className}>
         <script
           src="https://identity.netlify.com/v1/netlify-identity-widget.js"
           async
+          defer
         ></script>
         <script
           src="https://kit.fontawesome.com/db311df611.js"
           crossOrigin="anonymous"
           async
+          defer
         ></script>
         <DarkModeProvider>
+          <PerformanceMonitor />
           <div className="flex flex-col h-screen">
             <SlideOutNav />
             <main className="flex-grow">{children}</main>

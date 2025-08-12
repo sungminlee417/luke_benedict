@@ -123,18 +123,18 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="section-padding bg-white dark:bg-gray-900 transition-colors relative overflow-hidden">
+    <section className="section-padding bg-gray-50 dark:bg-gray-800 transition-colors">
       <div
         id="contact"
-        className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 relative z-10"
+        className="container mx-auto"
       >
         <div className="grid grid-cols-1 gap-x-16 gap-y-12 lg:grid-cols-5">
-          <div className="lg:col-span-2 animate-slide-in-left">
+          <div className="lg:col-span-2">
             <div className="text-center lg:text-left mb-8">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
                 {header}
               </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mb-6 animate-scale-in"></div>
+              <div className="w-24 h-1 bg-primary rounded-full mb-6"></div>
               <div className="space-y-4">
                 {splitIntoParagraphs(description).map((paragraph, index) => (
                   <p 
@@ -148,8 +148,8 @@ const ContactForm = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-3 animate-slide-in-right">
-            <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-gray-200/50 dark:border-gray-700/50">
+          <div className="lg:col-span-3">
+            <div className="bg-white dark:bg-gray-900 rounded-lg p-8 shadow-lg border border-gray-200 dark:border-gray-700">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="group">
                   <label

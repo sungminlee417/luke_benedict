@@ -39,26 +39,24 @@ const Videos = () => {
   const videoItems = recordings.filter(recording => recording.type === "Video URL").slice(0, videos.maxItems);
 
   return (
-    <section id="videos" className="section-padding bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 transition-colors relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-accent/5"></div>
+    <section id="videos" className="section-padding bg-gray-50 dark:bg-gray-800 transition-colors">
       
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16 animate-slide-up">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
             {videos.header}
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto animate-scale-in"></div>
+          <div className="w-24 h-1 bg-primary rounded-full mx-auto"></div>
           <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mt-8 max-w-2xl mx-auto font-light leading-relaxed">
             {videos.description}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 animate-fade-in">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {videoItems.map((video, index) => (
             <div 
               key={index}
-              className="group bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 animate-slide-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               <div className="relative">
                 {isClient && (
