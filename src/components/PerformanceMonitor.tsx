@@ -20,7 +20,7 @@ const PerformanceMonitor = () => {
     if (process.env.NODE_ENV !== 'production') return;
 
     // Load web-vitals library dynamically
-    import('web-vitals').then(({ onCLS, onFID, onFCP, onLCP, onTTFB }) => {
+    import('web-vitals').then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
       // Function to send metrics to analytics service
       const sendToAnalytics = (metric: any) => {
         console.log('Performance metric:', metric);
@@ -36,9 +36,9 @@ const PerformanceMonitor = () => {
         }
       };
 
-      // Measure Core Web Vitals
+      // Measure Core Web Vitals (using INP instead of deprecated FID)
       onCLS(sendToAnalytics);
-      onFID(sendToAnalytics);
+      onINP(sendToAnalytics);
       onFCP(sendToAnalytics);
       onLCP(sendToAnalytics);
       onTTFB(sendToAnalytics);
