@@ -6,7 +6,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Footer from "@/layouts/Footer";
 import { DarkModeProvider } from "@/contexts/DarkModeContext";
-import PerformanceMonitor from "@/components/PerformanceMonitor";
 
 config.autoAddCss = false;
 
@@ -68,7 +67,6 @@ export default function RootLayout({
           defer
         ></script>
         <DarkModeProvider>
-          <PerformanceMonitor />
           <div className="flex flex-col h-screen">
             <SlideOutNav />
             <main className="flex-grow">{children}</main>

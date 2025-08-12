@@ -26,7 +26,6 @@
     "react-hook-form": "^7.53.0",
     "react-player": "^2.16.0",
     "slick-carousel": "^1.8.1",
-    "web-vitals": "^5.1.0",
     "yup": "^1.4.0"
   },
   "devDependencies": {
