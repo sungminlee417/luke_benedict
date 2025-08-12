@@ -64,7 +64,7 @@ const Hero = () => {
   return (
     <section 
       id="hero" 
-      className="hero min-h-screen relative overflow-hidden"
+      className="hero min-h-screen-mobile relative overflow-hidden"
     >
       {/* Parallax background */}
       <div 

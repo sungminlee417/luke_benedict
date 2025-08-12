@@ -67,7 +67,7 @@ export default function RootLayout({
           defer
         ></script>
         <DarkModeProvider>
-          <div className="flex flex-col h-screen">
+          <div className="flex flex-col h-screen-mobile">
             <SlideOutNav />
             <main className="flex-grow">{children}</main>
             <Footer />
