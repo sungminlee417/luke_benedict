@@ -20,7 +20,7 @@ const PerformanceMonitor = () => {
     if (process.env.NODE_ENV !== 'production') return;
 
     // Load web-vitals library dynamically
-    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+    import('web-vitals').then(({ onCLS, onFID, onFCP, onLCP, onTTFB }) => {
       // Function to send metrics to analytics service
       const sendToAnalytics = (metric: any) => {
         console.log('Performance metric:', metric);
@@ -37,11 +37,11 @@ const PerformanceMonitor = () => {
       };
 
       // Measure Core Web Vitals
-      getCLS(sendToAnalytics);
-      getFID(sendToAnalytics);
-      getFCP(sendToAnalytics);
-      getLCP(sendToAnalytics);
-      getTTFB(sendToAnalytics);
+      onCLS(sendToAnalytics);
+      onFID(sendToAnalytics);
+      onFCP(sendToAnalytics);
+      onLCP(sendToAnalytics);
+      onTTFB(sendToAnalytics);
     }).catch((error) => {
       console.warn('Could not load web-vitals:', error);
     });
